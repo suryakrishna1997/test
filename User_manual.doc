@@ -1,0 +1,59 @@
+LOG FETCHER TOOL – USER MANUAL
+
+1. Introduction
+The Log Fetcher Tool is a command-line automation utility designed to simplify and standardize log collection from Android-based automotive systems.
+It integrates screen recording, bug report generation, log extraction, and packaging into a single workflow, eliminating manual effort and ensuring consistency across testing activities.
+2. Purpose
+•	Automate the process of collecting logs from the device
+•	Reduce manual intervention during debugging
+•	Ensure all required logs are captured in a structured format
+•	Provide a ready-to-share ZIP file for analysis
+3. Scope
+Applicable for automotive infotainment and ADAS testing environments using Android-based systems.
+•	Screen recording during test execution
+•	Bugreport generation
+•	Logcat capture
+•	System log extraction (HS Logs, Maker Logs, MCU)
+•	ZIP packaging (excluding video)
+4. Benefits
+•	Eliminates repetitive manual work
+•	Ensures consistent folder structure
+•	Saves ~70–80% time
+•	Reduces chances of missing logs
+•	Improves debugging efficiency
+5. Initial Setup
+System Requirements:
+•	Windows OS
+•	ADB installed and configured
+•	PowerShell available
+Device Requirements:
+•	USB Debugging enabled
+•	Device connected via USB
+Tool Configuration:
+•	Verify scrcpy path: D:\adb 1\adb\scrcpy.exe
+6. User Interface
+The tool uses a command-line interface with minimal user interaction such as entering folder name and controlling recording.
+7. Procedure (Steps to Use the Tool)
+Step 1: Open File Explorer and navigate to tool location
+Step 2: Open ADB folder and verify required files
+Step 3: Double-click Log and Video Recorder Tool.bat
+Step 4: Enter defect/test name when prompted
+Step 5: Connect device and ensure USB debugging is enabled
+Step 6: Press any key to start recording
+Step 7: Perform test scenario
+Step 8: Press any key to stop recording
+Step 9: Logs are collected automatically
+Step 10: Verify logs and ZIP file in created folder
+Step 11: Share ZIP file for analysis
+8. Output Structure
+Example:
+Test2/
+ ├── Test2.zip
+ ├── Video/
+ ├── Bugreport/
+ ├── Logcat/
+ ├── HS_Logs/
+ ├── Maker_Logs/
+ └── MCU/
+Final Note
+This tool standardizes log collection and improves efficiency, enabling faster debugging and better collaboration.

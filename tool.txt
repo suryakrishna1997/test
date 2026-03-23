@@ -1,0 +1,95 @@
+Log Fetcher Tool – User Manual
+1. 📌 Introduction
+The Log Fetcher Tool is a command-line automation utility designed to simplify and standardize log collection from Android-based automotive systems.
+It integrates multiple steps such as screen recording, bug report generation, log extraction, and packaging into a single workflow. This eliminates manual effort and ensures consistency across testing activities.
+2. 🎯 Purpose
+The purpose of this tool is to:
+Automate the process of collecting logs from the device
+Reduce manual intervention during debugging
+Ensure all required logs are captured in a structured format
+Provide a ready-to-share ZIP file for analysis by development teams
+3. 📍 Scope
+This tool is intended for:
+Automotive infotainment and ADAS testing environments
+Android-based systems where ADB access is available
+Test engineers performing issue reproduction and log collection
+It covers:
+Screen recording during test execution
+Bugreport generation
+Logcat capture
+System log extraction (HS Logs, Maker Logs, MCU logs)
+Packaging logs into a ZIP file (excluding video)
+4. ✅ Benefits of the Tool
+✔ Eliminates repetitive manual log collection steps
+✔ Ensures consistent folder structure for all test logs
+✔ Saves time during issue reporting
+✔ Reduces chances of missing critical logs
+✔ Provides a single ZIP file for easy sharing
+✔ Improves debugging efficiency for developers
+5. ⚙️ Initial Setup
+Before using the tool, ensure the following setup is completed:
+🔹 System Requirements
+Windows OS
+ADB installed and configured in system PATH
+PowerShell available (default in Windows)
+🔹 Device Requirements
+USB Debugging enabled
+Device connected via USB
+Proper permissions granted
+🔹 Tool Configuration
+Verify scrcpy.exe path in script:
+
+D:\adb 1\adb\scrcpy.exe
+Update path if required based on your system
+6. 🖥️ User Interface
+The tool uses a command-line interface (CLI).
+User interaction is minimal and includes:
+Entering a folder name
+Confirming device detection
+Starting and stopping screen recording
+All other steps are automated.
+7. 🚀 Steps to Use the Tool
+Step 1: Launch the Tool
+Double-click the .bat file or run via command prompt
+Step 2: Enter Folder Name
+Prompt:
+
+Please Enter Folder Name to capture logs and video:
+Enter a meaningful name (e.g., Bluetooth_Issue_Test1)
+Step 3: Device Detection
+Tool displays connected devices
+Press any key to continue
+Step 4: Start Screen Recording
+Screen recording starts automatically
+Perform the required test scenario
+Step 5: Stop Recording
+Press any key to stop recording
+Step 6: Log Collection (Automated)
+The tool will automatically:
+Capture bugreport
+Extract logcat logs
+Trigger system log export
+Pull logs from device storage
+Step 7: Log Organization
+Logs are organized into folders:
+Bugreport
+Logcat
+HS Logs
+Maker Logs
+MCU
+Step 8: ZIP Creation
+A ZIP file is created inside the same folder
+Video folder is excluded
+Step 9: Output Ready
+Final structure:
+
+Test2/
+ ├── Test2.zip
+ ├── Video/
+ ├── Bugreport/
+ ├── Logcat/
+ ├── HS_Logs/
+ ├── Maker_Logs/
+ └── MCU/
+🧠 Final Note
+This tool standardizes log collection and reduces dependency on manual steps, enabling faster debugging and efficient collaboration between testing and development teams.

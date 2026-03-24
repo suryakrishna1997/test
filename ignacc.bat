@@ -23,31 +23,57 @@ for %%F in (Bugreport Video Logcat HS_Logs Maker_Logs MCU) do mkdir "%D%\%%F"
 
 :: ===== DEVICE DETECTION =====
 call :wait_for_device
-
 echo Using device: !DEVICE!
 echo.
 
-:: ===== START RECORDING =====
-echo Starting screen recording...
-start "" "D:\adb 1\adb\scrcpy.exe" -s !DEVICE! --record "%D%\Video\%D%.mkv"
+:: =====================================================
+:: ===== FIRST RECORDING (BEFORE IGN) =====
+:: =====================================================
+echo Starting recording BEFORE IGN...
+start "" "D:\adb 1\adb\scrcpy.exe" -s !DEVICE! --record "%D%\Video\part1.mkv"
 
 echo.
-echo Perform test (IGN/ACC OFF allowed)
-echo Press any key to STOP recording...
+echo Perform initial test...
+echo Press any key BEFORE IGN OFF to stop recording
+pause >nul
+
+taskkill /IM scrcpy.exe /F >nul 2>nul
+
+:: =====================================================
+:: ===== IGN / ACC OFF =====
+:: =====================================================
+echo.
+echo Perform IGN OFF / ACC OFF now...
+pause
+
+:: =====================================================
+:: ===== WAIT FOR DEVICE RECONNECT =====
+:: =====================================================
+call :wait_for_device
+
+:: =====================================================
+:: ===== SECOND RECORDING (AFTER IGN) =====
+:: =====================================================
+echo Starting recording AFTER IGN...
+start "" "D:\adb 1\adb\scrcpy.exe" -s !DEVICE! --record "%D%\Video\part2.mkv"
+
+echo.
+echo Continue test after IGN...
+echo Press any key to stop recording
 pause >nul
 
 taskkill /IM scrcpy.exe /F >nul 2>nul
 
 echo.
-echo Recording stopped.
+echo Recording completed.
 echo.
 
-:: ===== ENSURE DEVICE BACK =====
-call :wait_for_device
-
+:: =====================================================
 :: ===== LOG COLLECTION =====
+:: =====================================================
 echo Collecting logs...
 
+call :wait_for_device
 adb bugreport "%D%"
 
 call :wait_for_device
@@ -62,7 +88,9 @@ timeout /t 5 >nul
 call :wait_for_device
 adb pull /sdcard/ICB_Log "%D%" >nul 2>nul
 
+:: =====================================================
 :: ===== MOVE FILES =====
+:: =====================================================
 echo Organizing logs...
 
 move "%D%\bugreport*zip" "%D%\Bugreport\" >nul 2>nul
@@ -89,7 +117,7 @@ rd /s /q "%D%\ICB_Log" >nul 2>nul
 
 echo.
 echo ==========================================
-echo Logs and video saved in: %D%
+echo Logs and videos saved in: %D%
 echo ==========================================
 echo.
 
@@ -97,7 +125,7 @@ pause
 exit /b
 
 :: =====================================================
-:: FUNCTION: WAIT FOR DEVICE (Handles IGN / ACC OFF)
+:: FUNCTION: WAIT FOR DEVICE (IGN SAFE)
 :: =====================================================
 :wait_for_device
 set DEVICE=

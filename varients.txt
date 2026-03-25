@@ -227,3 +227,28 @@ T60C1(Q1)
 adb shell setprop vendor.apn.sys.set.variant.code T60C1
 adb shell setprop vendor.apn.sys.set.hw.variation 090E07
 
+
+HW Variant	Code		HW Model	Code
+Q	01			
+R	02		30AA MAP	01
+S	03		30AA HATC	02
+T	04		TYAW	03
+V	05 *1		T20W	04
+U	06 *1		3BHA	05
+W	07		3BMA	06
+X	08		36WA	07
+Q1	09		30AY	08
+R1	0A		3A0W	09
+S1	0B		T90X	0A
+T1	0C		3V0W	0B
+T2	0D		3BWT	0C
+U1	0E		30AX	0D
+W2	0F		T60T	0E
+W3	10			
+S2	11			
+U2	12			
+R2	13			
+リザーブ	14-FE			
+未使用	FF			
+
+

@@ -1,0 +1,452 @@
+30AAA(Q)
+adb shell setprop vendor.apn.sys.set.variant.code 30AAA
+adb shell setprop vendor.apn.sys.set.hw.variation 010107
+
+30ACA(Q)
+adb shell setprop vendor.apn.sys.set.variant.code 30ACA
+adb shell setprop vendor.apn.sys.set.hw.variation 010107
+
+30ADA(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30ADA
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AKA(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AKA
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AKC(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AKC
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AMA(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AMA
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AXA(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AXA
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AYA(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AYA
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AYB(R)
+adb shell setprop vendor.apn.sys.set.variant.code 30AYB
+adb shell setprop vendor.apn.sys.set.hw.variation 020107
+
+30AYC(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AYC
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AYD(R)
+adb shell setprop vendor.apn.sys.set.variant.code 30AYD
+adb shell setprop vendor.apn.sys.set.hw.variation 020107
+
+30AYE(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AYE
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AYF(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AYF
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AYG(R)
+adb shell setprop vendor.apn.sys.set.variant.code 30AYG
+adb shell setprop vendor.apn.sys.set.hw.variation 020107
+
+30AYH(R)
+adb shell setprop vendor.apn.sys.set.variant.code 30AYH
+adb shell setprop vendor.apn.sys.set.hw.variation 020107
+
+30AYJ(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AYJ
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AYK(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AYK
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AYL(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AYL
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AYM(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AYM
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AYN(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AYN
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AYP(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AYP
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AZ0(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AZ0
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AZ1(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AZ1
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AZ2(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AZ2
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AUD(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AUD
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AUE(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AUE
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30ASA(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30ASA
+adb shell setprop vendor.apn.sys.set.hw.variation 030107
+
+30AJA(T)
+adb shell setprop vendor.apn.sys.set.variant.code 30AJA
+adb shell setprop vendor.apn.sys.set.hw.variation 040107
+
+30AQB(R)
+adb shell setprop vendor.apn.sys.set.variant.code 30AQB
+adb shell setprop vendor.apn.sys.set.hw.variation 020107
+
+TYAA2(Q)
+adb shell setprop vendor.apn.sys.set.variant.code TYAA2
+adb shell setprop vendor.apn.sys.set.hw.variation 010307
+
+TYAA3(Q)
+adb shell setprop vendor.apn.sys.set.variant.code TYAA3
+adb shell setprop vendor.apn.sys.set.hw.variation 010307
+
+TYAA4(Q)
+adb shell setprop vendor.apn.sys.set.variant.code TYAA4
+adb shell setprop vendor.apn.sys.set.hw.variation 010307
+
+TYBA1(Q)
+adb shell setprop vendor.apn.sys.set.variant.code TYBA1
+adb shell setprop vendor.apn.sys.set.hw.variation 010307
+
+TYAC0(Q)
+adb shell setprop vendor.apn.sys.set.variant.code TYAC0
+adb shell setprop vendor.apn.sys.set.hw.variation 010307
+
+TYAC1(Q)
+adb shell setprop vendor.apn.sys.set.variant.code TYAC1
+adb shell setprop vendor.apn.sys.set.hw.variation 010307
+
+TYAC2(Q)
+adb shell setprop vendor.apn.sys.set.variant.code TYAC2
+adb shell setprop vendor.apn.sys.set.hw.variation 010307
+
+TYBC1(Q)
+adb shell setprop vendor.apn.sys.set.variant.code TYBC1
+adb shell setprop vendor.apn.sys.set.hw.variation 010307
+
+TYAX1(Q)
+adb shell setprop vendor.apn.sys.set.variant.code TYAX1
+adb shell setprop vendor.apn.sys.set.hw.variation 010307
+
+TYBX0(Q)
+adb shell setprop vendor.apn.sys.set.variant.code TYBX0
+adb shell setprop vendor.apn.sys.set.hw.variation 010307
+
+TYAY0(S2)
+adb shell setprop vendor.apn.sys.set.variant.code TYAY0
+adb shell setprop vendor.apn.sys.set.hw.variation 110307
+
+TYAY1(S2)
+adb shell setprop vendor.apn.sys.set.variant.code TYAY1
+adb shell setprop vendor.apn.sys.set.hw.variation 110307
+
+TYBY0(S2)
+adb shell setprop vendor.apn.sys.set.variant.code TYBY0
+adb shell setprop vendor.apn.sys.set.hw.variation 110307
+
+3BHA0(Q1)
+adb shell setprop vendor.apn.sys.set.variant.code 3BHA0
+adb shell setprop vendor.apn.sys.set.hw.variation 090507
+
+3BHC0(Q1)
+adb shell setprop vendor.apn.sys.set.variant.code 3BHC0
+adb shell setprop vendor.apn.sys.set.hw.variation 090507
+
+3BHX0(Q1)
+adb shell setprop vendor.apn.sys.set.variant.code 3BHX0
+adb shell setprop vendor.apn.sys.set.hw.variation 090507
+
+3BMA0(W2)
+adb shell setprop vendor.apn.sys.set.variant.code 3BMA0
+adb shell setprop vendor.apn.sys.set.hw.variation 0F0607
+
+3BMA1(W2)
+adb shell setprop vendor.apn.sys.set.variant.code 3BMA1
+adb shell setprop vendor.apn.sys.set.hw.variation 0F0607
+
+3BMA2(Q)
+adb shell setprop vendor.apn.sys.set.variant.code 3BMA2
+adb shell setprop vendor.apn.sys.set.hw.variation 010607
+
+3BMC0(W2)
+adb shell setprop vendor.apn.sys.set.variant.code 3BMC0
+adb shell setprop vendor.apn.sys.set.hw.variation 0F0607
+
+3BMC1(Q)
+adb shell setprop vendor.apn.sys.set.variant.code 3BMC1
+adb shell setprop vendor.apn.sys.set.hw.variation 010607
+
+3BMC2(W2)
+adb shell setprop vendor.apn.sys.set.variant.code 3BMC2
+adb shell setprop vendor.apn.sys.set.hw.variation 0F0607
+
+36WJ0(T1)
+adb shell setprop vendor.apn.sys.set.variant.code 36WJ0
+adb shell setprop vendor.apn.sys.set.hw.variation 0C0707
+
+36WU0(S1)
+adb shell setprop vendor.apn.sys.set.variant.code 36WU0
+adb shell setprop vendor.apn.sys.set.hw.variation 0B0707
+
+36WN0(S1)
+adb shell setprop vendor.apn.sys.set.variant.code 36WN0
+adb shell setprop vendor.apn.sys.set.hw.variation 0B0707
+
+36WQ0(R1)
+adb shell setprop vendor.apn.sys.set.variant.code 36WQ0
+adb shell setprop vendor.apn.sys.set.hw.variation 0A0707
+
+36WQ1(R1)
+adb shell setprop vendor.apn.sys.set.variant.code 36WQ1
+adb shell setprop vendor.apn.sys.set.hw.variation 0A0707
+
+36WA0(Q1)
+adb shell setprop vendor.apn.sys.set.variant.code 36WA0
+adb shell setprop vendor.apn.sys.set.hw.variation 090707
+
+36WC0(Q1)
+adb shell setprop vendor.apn.sys.set.variant.code 36WC0
+adb shell setprop vendor.apn.sys.set.hw.variation 090707
+
+36WM0(S1)
+adb shell setprop vendor.apn.sys.set.variant.code 36WM0
+adb shell setprop vendor.apn.sys.set.hw.variation 0B0707
+
+36WP0(S1)
+adb shell setprop vendor.apn.sys.set.variant.code 36WP0
+adb shell setprop vendor.apn.sys.set.hw.variation 0B0707
+
+36WF0(S1)
+adb shell setprop vendor.apn.sys.set.variant.code 36WF0
+adb shell setprop vendor.apn.sys.set.hw.variation 0B0707
+
+30AM0(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AM0
+adb shell setprop vendor.apn.sys.set.hw.variation 030807
+
+30AJ0(T)
+adb shell setprop vendor.apn.sys.set.variant.code 30AJ0
+adb shell setprop vendor.apn.sys.set.hw.variation 040807
+
+30AJ1(T)
+adb shell setprop vendor.apn.sys.set.variant.code 30AJ1
+adb shell setprop vendor.apn.sys.set.hw.variation 040807
+
+30ATC(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30ATC
+adb shell setprop vendor.apn.sys.set.hw.variation 030807
+
+30ATD(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30ATD
+adb shell setprop vendor.apn.sys.set.hw.variation 030807
+
+30ATE(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30ATE
+adb shell setprop vendor.apn.sys.set.hw.variation 030807
+
+30AUG(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AUG
+adb shell setprop vendor.apn.sys.set.hw.variation 030807
+
+30AUH(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30AUH
+adb shell setprop vendor.apn.sys.set.hw.variation 030807
+
+30ASB(S)
+adb shell setprop vendor.apn.sys.set.variant.code 30ASB
+adb shell setprop vendor.apn.sys.set.hw.variation 030807
+
+3A0Q0(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Q0
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0QA(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0QA
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0Q3(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Q3
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0QB(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0QB
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0M0(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0M0
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0M1(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0M1
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0J0(T1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0J0
+adb shell setprop vendor.apn.sys.set.hw.variation 0C0907
+
+3A0Z0(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Z0
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0Z1(S1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Z1
+adb shell setprop vendor.apn.sys.set.hw.variation 0B0907
+
+3A0U0(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0U0
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0M3(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0M3
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0U1(S1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0U1
+adb shell setprop vendor.apn.sys.set.hw.variation 0B0907
+
+3A0M2(S1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0M2
+adb shell setprop vendor.apn.sys.set.hw.variation 0B0907
+
+3A0Q6(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Q6
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0QC(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0QC
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0Q1(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Q1
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0QE(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0QE
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0Q2(R1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Q2
+adb shell setprop vendor.apn.sys.set.hw.variation 0A0907
+
+3A0QD(R1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0QD
+adb shell setprop vendor.apn.sys.set.hw.variation 0A0907
+
+3A0Q7(R1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Q7
+adb shell setprop vendor.apn.sys.set.hw.variation 0A0907
+
+3A0QH(R1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0QH
+adb shell setprop vendor.apn.sys.set.hw.variation 0A0907
+
+3A0J1(T1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0J1
+adb shell setprop vendor.apn.sys.set.hw.variation 0C0907
+
+3A0Q5(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Q5
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0QG(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0QG
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0F0(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0F0
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0F1(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0F1
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0A5(Q1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0A5
+adb shell setprop vendor.apn.sys.set.hw.variation 090907
+
+3A0C5(Q1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0C5
+adb shell setprop vendor.apn.sys.set.hw.variation 090907
+
+3A0B0(S1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0B0
+adb shell setprop vendor.apn.sys.set.hw.variation 0B0907
+
+3A0P4(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0P4
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0P0(S1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0P0
+adb shell setprop vendor.apn.sys.set.hw.variation 0B0907
+
+3A0F3(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0F3
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0F2(S1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0F2
+adb shell setprop vendor.apn.sys.set.hw.variation 0B0907
+
+3A0P2(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0P2
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0Y0(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Y0
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0Y1(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Y1
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0Y2(U1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Y2
+adb shell setprop vendor.apn.sys.set.hw.variation 0E0907
+
+3A0Y3(R1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Y3
+adb shell setprop vendor.apn.sys.set.hw.variation 0A0907
+
+3A0Y6(R1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Y6
+adb shell setprop vendor.apn.sys.set.hw.variation 0A0907
+
+3A0Y4(R1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Y4
+adb shell setprop vendor.apn.sys.set.hw.variation 0A0907
+
+3A0Y7(R1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Y7
+adb shell setprop vendor.apn.sys.set.hw.variation 0A0907
+
+3A0Y5(R1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Y5
+adb shell setprop vendor.apn.sys.set.hw.variation 0A0907
+
+3A0Y8(R1)
+adb shell setprop vendor.apn.sys.set.variant.code 3A0Y8
+adb shell setprop vendor.apn.sys.set.hw.variation 0A0907
+

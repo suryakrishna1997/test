@@ -79,8 +79,7 @@ timeout /t 5 >nul
 
 :: ===== [4/4] Pull Logs =====
 echo [4/4] Pulling logs...
-adb pull /sdcard/ICB_Log "%D%" >nul 2>nul
-
+adb pull /sdcard/ICB_Log "%D%"
 :: ===== Move Bugreport =====
 move "%D%\bugreport*zip" "%D%\Bugreport\" >nul 2>nul
 
@@ -112,7 +111,7 @@ if exist "%D%\ICB_Log\" (
         move "%D%\ICB_Log\%%F" "%D%\Maker_Logs\" >nul
         goto :mk_done
     )
-)
+
 
 :mk_done
 
@@ -125,9 +124,9 @@ echo Creating ZIP (excluding Video folder)...
 
 powershell -Command ^
 "Compress-Archive -Path '%D%\Bugreport','%D%\Logcat','%D%\HS_Logs','%D%\Maker_Logs','%D%\MCU' ^
--DestinationPath '%D%.zip' -Force"
+-DestinationPath '%D%\%D%.zip' -Force"
 
-echo ZIP created: %D%.zip
+echo ZIP created: %D%\%D%.zip
 
 echo.
 echo Done! Logs saved in folder: %D%

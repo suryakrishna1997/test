@@ -1,42 +1,53 @@
 @echo off
 setlocal EnableDelayedExpansion
+cd /d "%~dp0"
 
+echo.
 set /p VAR=Enter Variant Code: 
 
 set FOUND=0
+set TYPE=
 set LINE1=
 set LINE2=
-set TYPE=
-set COUNT=0
 
-:: Search in data.txt
-for /f "delims=" %%A in (data.txt) do (
+echo.
+echo Searching variant...
 
-    if "!FOUND!"=="1" (
-        if !COUNT!==0 set LINE1=%%A
-        if !COUNT!==1 set LINE2=%%A
-        set /a COUNT+=1
-    )
+:: Fast search using findstr (case-insensitive)
+for /f "delims=" %%A in ('findstr /I /B "%VAR%" data.txt') do (
+    set FOUND=1
+    set MATCH_LINE=%%A
 
-    echo %%A | findstr /B /I "%VAR%" >nul
-    if !errorlevel! == 0 (
-        set FOUND=1
-        set COUNT=0
-
-        :: Extract type (Q, S, R1 etc)
-        for /f "tokens=2 delims=()" %%T in ("%%A") do set TYPE=%%T
-    )
+    :: Extract TYPE (inside brackets)
+    for /f "tokens=2 delims=()" %%T in ("%%A") do set TYPE=%%T
 )
 
 :: If not found
 if "%FOUND%"=="0" (
     echo.
-    echo  Variant not found!
+    echo Variant not found!
     pause
     exit /b
 )
 
-:: Display details
+:: Get next two lines after match
+set COUNT=0
+for /f "delims=" %%A in (data.txt) do (
+    if defined MATCH_LINE (
+        if "%%A"=="!MATCH_LINE!" (
+            set COUNT=1
+        ) else if !COUNT! GEQ 1 (
+            if !COUNT!==1 set LINE1=%%A
+            if !COUNT!==2 set LINE2=%%A
+            set /a COUNT+=1
+        )
+    )
+)
+
+:: Extract HW from LINE2
+for /f "tokens=6" %%H in ("%LINE2%") do set HW=%%H
+
+:: Display info
 echo.
 echo ==========================================
 echo Variant: %VAR%
@@ -45,9 +56,6 @@ echo ==========================================
 echo %LINE1%
 echo %LINE2%
 
-:: Extract HW value
-for /f "tokens=6" %%H in ("%LINE2%") do set HW=%%H
-
 echo.
 echo ==========================================
 echo   WARNING
@@ -55,10 +63,7 @@ echo ==========================================
 echo Please verify the hardware variant type: %TYPE%
 echo.
 echo If the variant is incorrect,
-echo.
-echo ICB may display "Please consult your dealer" message.
-echo.
-echo Make sure you have selected the correct variant.
+echo ICB may display "Please consult your dealer".
 echo ==========================================
 echo.
 
@@ -78,13 +83,12 @@ echo Checking device connection...
 adb devices | findstr /R /C:"device$" >nul
 
 if errorlevel 1 (
-    echo  No device connected!
-    echo Please connect device and enable USB debugging.
+    echo No device connected!
     pause
     exit /b
 )
 
-echo  Device connected.
+echo Device connected.
 echo.
 
 :: Execute commands
@@ -95,11 +99,11 @@ adb shell setprop vendor.apn.sys.set.variant.code %VAR%
 
 echo.
 echo Variant switch completed successfully.
-echo Your device will reboot in 5 seconds...
+echo Rebooting in 5 seconds...
 timeout /t 5 >nul
 
 adb reboot
 
 echo.
-echo  Flashing completed successfully!
+echo Flashing completed successfully!
 pause

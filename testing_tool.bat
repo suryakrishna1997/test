@@ -43,35 +43,47 @@ echo.
 :: ===== RECORD LOOP =====
 :RECORD_LOOP
 
-:: Check STOP key
-choice /C QN /N /T 1 /D N >nul
-if errorlevel 1 if not errorlevel 2 (
-    echo Stopping recording...
-    goto STOP_RECORDING
-)
-
 :: Timestamp
 for /f "tokens=1-4 delims=/ " %%a in ("%date%") do set DATE=%%d-%%b-%%c
 for /f "tokens=1-3 delims=:." %%a in ("%time%") do set TIME=%%a-%%b-%%c
 
 set FILE_NAME=%D%_!DATE!_!TIME!
 
-echo [Recording] !FILE_NAME!.mkv
+echo.
+echo [Recording Started] !FILE_NAME!.mkv
 
 start "" "D:\adb 1\adb\scrcpy.exe" -s !DEVICE! --record "%D%\Video\!FILE_NAME!.mkv"
 
-:: Wait IGN OFF
-adb -s !DEVICE! wait-for-disconnect
+:: ===== MONITOR LOOP =====
+:MONITOR_LOOP
 
-echo Device disconnected...
+:: Check if user pressed Q (non-blocking)
+choice /C QN /N /T 1 /D N >nul
+if errorlevel 1 if not errorlevel 2 (
+    echo.
+    echo Stopping recording by user...
+    goto STOP_RECORDING
+)
 
-taskkill /IM scrcpy.exe /F >nul 2>&1
+:: Check device state
+set STATE=
+for /f "tokens=2" %%S in ('adb -s !DEVICE! get-state 2^>nul') do set STATE=%%S
 
-:: Wait IGN ON
-adb wait-for-device
-timeout /t 2 >nul
+if not "!STATE!"=="device" (
+    echo Device disconnected (IGN OFF)...
 
-goto RECORD_LOOP
+    taskkill /IM scrcpy.exe /F >nul 2>&1
+
+    echo Waiting for reconnect...
+    adb wait-for-device
+
+    echo Device reconnected.
+    timeout /t 2 >nul
+
+    goto RECORD_LOOP
+)
+
+goto MONITOR_LOOP
 
 
 :: ===== STOP =====
@@ -91,11 +103,11 @@ for %%F in ("%D%\Video\*.mkv") do (
     echo file '%%~fF' >> "%D%\Video\filelist.txt"
 )
 
-:: ===== MERGE =====
+:: ===== MERGE VIDEOS =====
 ffmpeg -f concat -safe 0 -i "%D%\Video\filelist.txt" -c copy "%D%\Video\Final_%D%.mkv"
 
 if exist "%D%\Video\Final_%D%.mkv" (
-    echo Final video created: %D%\Video\Final_%D%.mkv
+    echo Final video created successfully.
 ) else (
     echo Video merge failed!
 )
@@ -131,7 +143,7 @@ for /f "delims=" %%F in ('dir "%D%\ICB_Log\makerLog_*" /ad /b /o-n 2^>nul') do (
 
 rd /s /q "%D%\ICB_Log" >nul 2>&1
 
-:: ===== ZIP =====
+:: ===== ZIP CREATION =====
 powershell -Command ^
 "Compress-Archive -Path '%D%\Bugreport','%D%\Logcat','%D%\HS_Logs','%D%\Maker_Logs' -DestinationPath '%D%\%D%.zip' -Force"
 

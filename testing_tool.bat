@@ -2,12 +2,9 @@
 setlocal EnableDelayedExpansion
 cd /d "%~dp0"
 
-:: Prevent sudden window close on error
-title Log & Video Recorder Tool
-
 echo.
 echo ==========================================
-echo   Log and Video Recorder Tool (Stable)
+echo   Log and Video Recorder Tool (Final)
 echo ==========================================
 echo.
 
@@ -19,7 +16,7 @@ if "%D%"=="" (
     exit /b
 )
 
-:: ===== CREATE FOLDERS =====
+:: ===== FOLDERS =====
 mkdir "%D%" >nul 2>&1
 for %%F in (Bugreport Video Logcat HS_Logs Maker_Logs MCU) do mkdir "%D%\%%F" >nul 2>&1
 
@@ -38,6 +35,7 @@ if not defined DEVICE (
 )
 
 echo Device Connected: !DEVICE!
+
 echo.
 echo Press 'Q' anytime to STOP recording
 echo.
@@ -45,69 +43,38 @@ echo.
 :: ===== RECORD LOOP =====
 :RECORD_LOOP
 
+:: Check STOP key
+choice /C QN /N /T 1 /D N >nul
+if errorlevel 1 if not errorlevel 2 (
+    echo Stopping recording...
+    goto STOP_RECORDING
+)
+
 :: Timestamp
 for /f "tokens=1-4 delims=/ " %%a in ("%date%") do set DATE=%%d-%%b-%%c
 for /f "tokens=1-3 delims=:." %%a in ("%time%") do set TIME=%%a-%%b-%%c
 
 set FILE_NAME=%D%_!DATE!_!TIME!
 
-echo.
-echo [Recording Started] !FILE_NAME!.mkv
+echo [Recording] !FILE_NAME!.mkv
 
 start "" "D:\adb 1\adb\scrcpy.exe" -s !DEVICE! --record "%D%\Video\!FILE_NAME!.mkv"
 
-:: ===== MONITOR LOOP =====
-:MONITOR_LOOP
+:: Wait IGN OFF
+adb -s !DEVICE! wait-for-disconnect
 
-:: Check STOP key
-choice /C QN /N /T 1 /D N >nul
-if errorlevel 1 if not errorlevel 2 (
-    echo.
-    echo Stopping recording by user...
-    goto STOP_RECORDING
-)
+echo Device disconnected...
 
-:: ===== SAFE DEVICE STATE CHECK =====
-adb -s !DEVICE! get-state > "%TEMP%\state.txt" 2>nul
+taskkill /IM scrcpy.exe /F >nul 2>&1
 
-set STATE=
-set /p STATE=<"%TEMP%\state.txt"
-del "%TEMP%\state.txt" >nul 2>&1
+:: Wait IGN ON
+adb wait-for-device
+timeout /t 2 >nul
 
-if "!STATE!"=="" set STATE=unknown
-
-:: ===== HANDLE DISCONNECT =====
-if /I not "!STATE!"=="device" (
-
-    echo.
-    echo Device disconnected (IGN OFF)...
-
-    taskkill /IM scrcpy.exe /F >nul 2>&1
-
-    echo Waiting for reconnect...
-
-    :WAIT_RECONNECT
-    timeout /t 2 >nul
-
-    adb -s !DEVICE! get-state > "%TEMP%\state.txt" 2>nul
-    set STATE=
-    set /p STATE=<"%TEMP%\state.txt"
-    del "%TEMP%\state.txt" >nul 2>&1
-
-    if /I not "!STATE!"=="device" (
-        goto WAIT_RECONNECT
-    )
-
-    echo Device reconnected. Stabilizing...
-    timeout /t 5 >nul
-
-    goto RECORD_LOOP
-)
-
-goto MONITOR_LOOP
+goto RECORD_LOOP
 
 
-:: ===== STOP RECORDING =====
+:: ===== STOP =====
 :STOP_RECORDING
 taskkill /IM scrcpy.exe /F >nul 2>&1
 
@@ -124,13 +91,13 @@ for %%F in ("%D%\Video\*.mkv") do (
     echo file '%%~fF' >> "%D%\Video\filelist.txt"
 )
 
-:: ===== MERGE VIDEOS =====
+:: ===== MERGE =====
 ffmpeg -f concat -safe 0 -i "%D%\Video\filelist.txt" -c copy "%D%\Video\Final_%D%.mkv"
 
 if exist "%D%\Video\Final_%D%.mkv" (
-    echo Final video created successfully.
+    echo Final video created: %D%\Video\Final_%D%.mkv
 ) else (
-    echo Video merge failed! Check FFmpeg path.
+    echo Video merge failed!
 )
 
 echo.
@@ -147,7 +114,7 @@ adb -s !DEVICE! shell am broadcast -a com.honda.auto.action.EXPORT_LOGS --user 0
 timeout /t 5 >nul
 adb -s !DEVICE! pull /sdcard/ICB_Log "%D%" >nul 2>&1
 
-:: ===== ORGANIZE FILES =====
+:: ===== ORGANIZE =====
 move "%D%\bugreport*.zip" "%D%\Bugreport\" >nul 2>&1
 
 for /f "delims=" %%F in ('dir "%D%\ICB_Log\hw_err_*" /ad /b /o-n 2^>nul') do (
@@ -164,7 +131,7 @@ for /f "delims=" %%F in ('dir "%D%\ICB_Log\makerLog_*" /ad /b /o-n 2^>nul') do (
 
 rd /s /q "%D%\ICB_Log" >nul 2>&1
 
-:: ===== ZIP CREATION =====
+:: ===== ZIP =====
 powershell -Command ^
 "Compress-Archive -Path '%D%\Bugreport','%D%\Logcat','%D%\HS_Logs','%D%\Maker_Logs' -DestinationPath '%D%\%D%.zip' -Force"
 

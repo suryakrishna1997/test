@@ -97,29 +97,6 @@ goto :RECORD_LOOP
 :: ===== STOP & MERGE =====
 :STOP_RECORDING
 echo.
-echo ==========================================
-echo   Merging Videos
-echo ==========================================
-echo.
-
-del "!D!\Video\filelist.txt" >nul 2>&1
-
-for %%F in ("!D!\Video\*.mkv") do (
-    echo file '%%~fF' >> "!D!\Video\filelist.txt"
-)
-
-if not exist "!D!\Video\filelist.txt" (
-    echo No video files found to merge. Skipping...
-    goto :COLLECT_LOGS
-)
-
-ffmpeg -f concat -safe 0 -i "!D!\Video\filelist.txt" -c copy "!D!\Video\Final_!D!.mkv" -y
-
-if exist "!D!\Video\Final_!D!.mkv" (
-    echo Final video created: !D!\Video\Final_!D!.mkv
-) else (
-    echo Video merge failed!
-)
 
 :: ===== LOG COLLECTION =====
 :COLLECT_LOGS

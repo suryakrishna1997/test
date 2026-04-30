@@ -102,3 +102,12 @@ echo.
 
 pause
 exit /b
+
+
+
+
+	adb bugreport
+	adb logcat -d all > logcat.txt
+	adb shell am broadcast -a com.honda.auto.action.EXPORT_LOGS --user 0
+adb pull /sdcard/ICB_Log
+

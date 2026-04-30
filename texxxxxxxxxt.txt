@@ -1,0 +1,104 @@
+@echo off
+setlocal EnableDelayedExpansion
+cd /d "%~dp0"
+
+echo.
+echo ==========================================
+echo   Welcome to Log Collector Tool
+echo ==========================================
+echo.
+
+set /p D=Please provide a folder name to capture logs: 
+if "%D%"=="" (
+    echo.
+    echo No name entered.
+    pause
+    exit /b
+)
+
+echo.
+mkdir "%D%" >nul 2>&1
+for %%F in (Bugreport Logcat HS_Logs Maker_Logs MCU Video) do mkdir "%D%\%%F" >nul 2>&1
+
+echo.
+echo Waiting for the device to establish an ADB connection...
+echo.
+
+adb devices
+
+for /f "skip=1 tokens=1,2" %%A in ('adb devices') do (
+    if "%%B"=="device" set DEVICE=%%A
+)
+
+if not defined DEVICE (
+    echo No device detected!
+    pause
+    exit /b
+)
+
+echo.
+echo Device Connected Sucessfully...
+echo.
+echo ==========================================
+echo   Log Collection Started
+echo ==========================================
+echo.
+
+echo [1/4] Bugreport...
+adb -s !DEVICE! bugreport "%D%"
+echo Bugreport collected successfully.
+echo.
+
+echo [2/4] Logcat...
+adb -s !DEVICE! logcat -d > "%D%\Logcat\logcat.txt"
+echo Logcat collected successfully.
+echo.
+
+echo [3/4] Broadcast Logs...
+adb shell am broadcast -a com.honda.auto.action.EXPORT_LOGS --user 0
+echo Permission fetched successfully.
+echo.
+
+echo Waiting to store logs...
+timeout /t 3 >nul
+
+echo.
+echo [4/4] Pulling Logs...
+adb -s !DEVICE! pull /sdcard/ICB_Log "%D%" >nul 2>&1
+echo.
+
+echo Moving files to respective folders...
+echo.
+
+move "%D%\bugreport*.zip" "%D%\Bugreport\" >nul 2>&1
+
+for /f "delims=" %%F in ('dir "%D%\ICB_Log\hw_err_*" /ad /b /o-n 2^>nul') do (
+    move "%D%\ICB_Log\%%F" "%D%\HS_Logs\" >nul
+    goto :hw_done
+)
+:hw_done
+
+for /f "delims=" %%F in ('dir "%D%\ICB_Log\sw_err_*" /ad /b /o-n 2^>nul') do (
+    move "%D%\ICB_Log\%%F" "%D%\HS_Logs\" >nul
+    goto :sw_done
+)
+:sw_done
+
+for /f "delims=" %%F in ('dir "%D%\ICB_Log\makerLog_*" /ad /b /o-n 2^>nul') do (
+    move "%D%\ICB_Log\%%F" "%D%\Maker_Logs\" >nul
+    goto :mk_done
+)
+:mk_done
+
+
+
+echo.
+echo ==========================================
+echo   Process Completed Successfully
+echo ==========================================
+echo.
+echo Logs are stored in: %D% folder
+echo.
+
+pause
+exit /b

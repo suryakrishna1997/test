@@ -1,0 +1,2130 @@
+2.3.1 Basic Function Requirements
+2.3.1.1 Conformity Specifications
+Comply with Wi-Fi Alliance certifications.
+
+
+
+2.3.1.2 Regulatory Compliance
+Comply with the laws and regulations of each listed country.
+
+
+
+2.3.2 Specification Differences for Vehicle Model and Specification [SR-180400-WFS-19]
+The specification differences for each design are shown below.
+
+
+
+The direction is determined by obtaining the value (*) from the FCP.
+
+*Values to be used, such as destinations and listing countries, will be considered and adjusted after the basic design. See [FCP List .xlsx].
+
+
+
+2.3.2.1 Available Frequency Channels
+The frequency channels used in Wi-Fi are subject to regulations by the radio laws of each country.
+
+Therefore, it is necessary to select frequencies approved in each country from the frequency channels supported by ICBs.
+
+The frequency channel selection is carried out for each destination, and the channel is selected that is applicable to all shipping countries included in the target destination.
+
+After shipment, the user may move or resell it abroad, but in such case, the legal responsibility shall be the responsibility of the user. PJ01DEV01-41890 - [Request Specification QA] [WiFi] Frequency Channels Available for Each Purpose CLOSED
+
+For the frequency channels that can be used for each application, please refer to the Tier 1 specification.
+
+For ▲i23M, refer to the following path.
+https://orca.rd.honda.co.jp/svn/all_23Mmodel/h23m_apn_mic/05_work_all/80_Model development/30AA/WiFi available frequency
+
+▲ihttps://orca.rd.honda.co.jp/svn/all_23Mmodel/h23m_apn_mic/03_share_apn_to_hgt_mic/98_Wifi Available Frequency
+
+
+
+2.3.2.2 Honda Affiliated Wi-Fi AP
+The list of Honda-affiliated Wi-Fi APs initially registered with ICB has different settings for each application.
+
+For information on Honda affiliated Wi-Fi APs, refer to [3.1.4.7 Initially registered Honda Affiliated Wi-Fi APs].
+
+
+
+2.3.2.3 Driving Operation Restrictions
+The operating restrictions when driving the vehicle are set differently depending on the direction.
+
+For details on the driving operation restriction specification for each direction, refer to [Screen Display Specification _1804_Wi-Fi (Station)].
+
+
+
+2.3.2.4 Default Values of Honda Update License Settings
+The default value of the Honda Update license setting when connecting to an unregistered Wi-Fi AP is different for each device.
+
+For Honda Update license settings, refer to [5.2.1 Wi-Fi AP Settings].
+
+
+
+2.3.2.5 Dual MAC operation support (▲c)
+Except for (▲m) 30AA (▲l) and (▲n) 30AY vehicles, Dual MAC operation is supported.
+However, if both the 5GHz and 2.4GHz frequency bands are enabled, Dual MAC operation is supported, but if either frequency band is disabled, Single MAC operation will be performed.
+
+For information on Dual MAC operation, see [3.1.3 Wi-Fi Function State Settings].
+
+Since the Wi-Fi chip used in (▲f)(▲m) products is not a Dual MAC, there are some restrictions on user operation to meet Apple requirements due to the limitations of the Wi-Fi module. For details of the restrictions, see [3.2.6 Display of restrictions when compatible with Dual MAC].
+
+2.4 System Configuration
+The system configuration is different depending on each function. For details, see the following chapter.
+
+
+
+2.4.1 System Configuration Diagram
+2.4.1.1 System Configuration Diagram
+The system configuration diagram of this function is shown below.
+
+
+
+
+
+図.2.4.1.1_1 システム構成図
+
+※グレーアウトしているコンポーネントは未使用。
+
+
+
+2.4.1.2 Wi-Fi STA機能のシステム構成
+Wi-Fi STA機能時のシステム構成図を以下に示す。
+
+
+
+図.2.4.1.2_1 Wi-Fi STA機能のシステム構成
+
+
+
+2.4.1.3 Wi-Fi AP機能のシステム構成
+Wi-Fi AP機能時のシステム構成図を以下に示す。
+
+
+
+図.2.4.1.3_1 Wi-Fi AP機能のシステム構成
+
+
+
+2.4.2 システム構成要素の役割
+2.4.2.1 システム構成要素の役割
+表2.4.2.1_1 システム構成要素の役割
+
+
+
+ICB(Wi-Fi STA機能)	Wi-Fi STA機器として、周辺のWi-Fi APへ接続する。
+ICB(Wi-Fi AP機能)	Wi-Fi APとして、ICBとWi-Fi STA機器を接続する。
+車両信号
+
+[ICBシステム構成（論理）]-[ICB内アーキテクチャ]-[機能役責]の[車両信号]参照
+不揮発メモリ	[ICBシステム構成（論理）]-[ICB内アーキテクチャ]-[機能役責]の[不揮発メモリ]参照
+B-CAN通信	[ICBシステム構成（論理）]-[ICB内アーキテクチャ]-[機能役責]の[B-CAN通信]参照
+BT/Wifi通信	
+[ICBシステム構成（論理）]-[ICB内アーキテクチャ]-[機能役責]の[BT/Wifi通信]参照
+
+
+
+2.4.2.2 Wi-Fi 対応スペック
+ICBがサポートするWi-Fiの対応スペックを以下に示す。
+
+
+
+表.2.4.2.2_1 対応スペック
+
+
+
+アンテナ	
+2×2：MIMO方式 (5GHz使用時)
+1×1：SISO方式 (2.4GHz使用時)
+※アンテナ数は、性能測定において最良の条件を検証し、最も効果が高いと判断される方式を採用する。
+
+スペック	
+IEEE 802.11a/b/g/n/ac
+
+周波数	
+2.4GHz　：2.412-2.484 GHz
+5GHz　 　：4.90-5.925 GHz
+
+バンド	
+2.4GHz　：20(▲o)/40 MHz
+5GHz     ：20/40/80 MHz
+
+サポート	Wi-Fi STA/Wi-Fi AP
+
+
+表.2.4.2.2_2 対応する周波数チャンネル
+
+
+
+2.4GHz	1/2/3/4/5/6/7/8/9/10/11/12/13
+5GHz	
+W52 (36/40/44/48ch)
+W53 (52/56/60/64ch)
+W56 (100/104/108/112/116/120/124/128/132/136/140/144ch)
+W58 (149/153/157/161/165ch)
+
+DFSが有効な周波数チャンネルの場合、DFSの仕組みに従いWi-Fi通信に利用している周波数チャンネルを切り替える。
+
+DFSの周波数チャンネルの切替は、本開発ソフトで実現する機能ではなくWi-Fiチップ側で実現する機能である。
+
+また、車両周辺のレーダー波と干渉する周波数チャンネルは使用できない。
+
+2.4.3 構成要素間インタフェース
+構成要素間インターフェースを以下に示す。
+
+
+
+表2.4.3_1 構成要素間インターフェース
+
+
+
+
+
+
+
+ICB(Wi-Fi STA機能) ― 無線LAN機器(Wi-Fi AP)	Wi-Fi	IEEE 802.11a/b/g/n/ac	〇
+ICB (Wi-Fi AP function) - wireless LAN equipment (Wi-Fi STA device)	Wi-Fi	IEEE 802.11a/b/g/n/ac	〇
+
+
+2.5 ICB System Control Requirements
+2.5.1 Control Requirements for Starting, Shutting and Suspending
+Don't
+
+
+
+2.5.2 Voice Path Control Requirements
+Don't
+
+
+
+2.5.3 Video Path Control Requirements
+Don't
+
+
+
+2.5.4 Warranty Coverage When Connecting an External Device [SR-180400-WFS-20]
+2.5.4.1 Warranty Coverage When Connected to Wi-Fi
+Wi-Fi	Wi-Fi Enabled Devices	IEEE 802.11a/b/g/n/ac
+
+
+2.5.4.2 Warranty Coverage When Connected to Wireless CarPlay/Wireless Android Auto
+For the warranty coverage of Wireless CarPlay/Wireless Android Auto connections, refer to [Software Requirements Specification_Smartphone Connection].
+
+
+
+
+3 Functional Requirements
+3.1 Function Description and Normal Operation
+ICBs have the following functions.
+
+・(▲b) Wi-Fi function status setting Wi-Fi mode switching
+
+・Wi-Fi STA function
+
+- Wi-Fi AP function
+
+・Function to use Wi-Fi
+
+・(▲b) Wi-Fi status display in the indicator areaWi-Fi mode display
+
+・Character input in Wi-Fi settings
+
+- Breadcrumbs in Wi-Fi settings
+
+・(▲q) Wi-Fi PP function
+
+3.1.1 Startup Conditions and Triggers [SR-180400-WFS-10]
+3.1.1.1 Startup by State Transition of ICB System
+When the ICB system transitions to the operating state, if the user login and authentication are completed, the (▲b) WiFi state settings are maintained (▲b) and each Wi-Fi function will be provided according to the Wi-Fi mode setting.
+
+If the user login and authentication are not complete, the Wi-Fi function will be provided after completion.
+
+3.1.2 Exit Conditions/Triggers [SR-180400-WFS-11]
+3.1.2.1 Termination by State Transition of ICB System
+When the ICB system transitions to a suspended state or a state in preparation for shutdown, the Wi-Fi function is terminated.
+
+In the suspended readiness state, only the Wi-Fi STA function will continue to be provided, and the Wi-Fi AP function will be stopped.
+
+3.1.3 Wi-Fi (▲c) Function Status Setting [SR-180400-WFS-01]
+(▲b) Change Wi-Fi status settings to control the operation of each Wi-Fi feature. TheWi-Fi mode setting allows you to switch between Wi-Fi running modes and control the status of each Wi-Fi function.
+
+(▲c) 3.1.3.1 Dual MAC Compatible Diffs
+The mode that can be set varies depending on whether or not Dual MAC operation is supported. (▲d) For information on whether or not Dual MAC is supported, refer to [2.3.2.5 Dual MAC Operation].
+
+3.1.3.1.1 For Dual MAC Non-Compatible (▲d) Variants
+Each Wi-Fi mode is shown below.
+
+Table.3.1.3_1 Wi-Fi Mode Settings
+
+Network Mode	When the setting is enabled, enable the Wi-Fi STA function.
+Smartphone Connection mode	Enable the Wi-Fi AP function when the setting is enabled.
+OFF Mode	If Network mode and Smartphone Connection mode are disabled, the Wi-Fi signal output will be stopped.
+(▲c) 3.1.3.1.1.1 Switching by User Operation
+Describe the outline of the operation of switching Wi-Fi mode settings by user operation.
+
+(1) Select Wi-Fi from Connection Settings to launch the Wi-Fi settings screen.
+
+For details on Connection Settings, refer to [Screen Transition Specification _1803_Bluetooth].
+
+The screen to be launched is determined according to the current Wi-Fi mode settings.
+
+
+
+(2) The Change Mode screen is displayed by the Wi-Fi Mode Change operation, and Wi-Fi OFF mode, Network mode, and Smartphone Connection mode are selected.
+
+
+
+Check with the user before changing the mode if:
+
+・When switching from Smartphone Connection mode to Network mode, the user will confirm that the ICB AP will no longer be available.
+
+- If you disable Smartphone Connection mode while Wireless CarPlay or Wireless Android Auto is connected, check the disconnection of the Wireless CarPlay/Wireless Android Auto device.
+
+・When switching from Network mode to Smartphone Connection mode, the user will confirm that the Network will no longer be available.
+
+
+
+
+
+Fig.3.1.3.1_1 Transition diagram of setting change of Wi-Fi state
+
+The figure is an example to illustrate the function, and for the content of the screen transition, refer to the [Screen Transition Specification_1804_Wi-Fi (Station)].
+
+(▲c) 3.1.3.1.2 For Dual MAC (▲d) variants
+Each Wi-Fi function is shown in [Table.3.1.3_2 Wi-Fi Functions].
+
+・If each Wi-Fi function is disabled, stop the output of Wi-Fi radio waves.
+
+・It is possible for each Wi-Fi function to operate at the same time.
+
+Table.3.1.3_2 Wi-Fi Functions
+
+Wi-Fi STA	While the function is active, the ICB can connect to the access points around the vehicle.
+Wi-Fi AP	While the function is active, the ICB acts as an access point and can connect with Wi-Fi STA devices.
+3.1.3.1.2.1 Changing Settings by User Operation
+Outline of the operation of changing the state setting of the Wi-Fi function by the user.
+
+(1) Activate Wi-Fi settings from the console settings.
+
+For details on console settings, see General Settings (Value List).
+
+(2) Change the state settings of Wi-Fi functions to change the running state of each Wi-Fi function.
+
+If you disable the Wi-Fi AP function by user operation while connecting Wireless CarPlay or Wireless Android Auto,
+
+Confirm the disconnection of the Wireless CarPlay/Wireless Android Auto device to the user.
+
+
+
+Fig.3.1.3.1_2 Transition diagram of setting change of Wi-Fi state
+
+The figure is an example to illustrate the function, and for the content of the screen transition, refer to the [Screen Transition Specification_1804_Wi-Fi (Station)].
+
+(3) Warning Dialog on Edit AP Settings (▲y)
+When Edit Access Point Settings is clicked, a warning dialog shall be displayed with the following message:
+
+
+
+"When you change Wi-Fi settings, your phone may no longer connect to the vehicle for wireless Apple CarPlay/Android Auto. To resolve, delete the phone from vehicle’s device list and redo the pairing setup. Continue?"
+
+The warning dialog shall not be displayed if any device is connected to Apple CarPlay (CP) or Android Auto (AA), in accordance with HUIG:5.0‑R05‑064.
+
+3.1.3.2 Switching by Background Processing
+3.1.3.2.1 OTA Background Processing
+OTA has the function of performing download processing in the background. Li,
+
+If the download process is performed after transitioning to the state of preparing to shut down, Network mode (▲c) (Wi-Fi STA function in the case of Dual MAC compatible (▲d) variants) is automatically enabled.
+
+While Wireless CarPlay/Wireless Android Auto is connected, confirm the disconnection to the user before enabling Network mode.
+
+After the OTA background processing is completed, change the Wi-Fi mode according to the Wi-Fi mode settings you have.
+
+For details on OTA, see [Software Request Specification _OTA].
+
+3.1.3.2.2 Wireless CP/Wireless AA Connection Authentication
+When Wireless CarPlay/Wireless Android Auto is connected, Smartphone Connection mode (▲c) (Wi-Fi AP function in the case of Dual MAC compatible (▲d) variants) is automatically activated.
+
+(▲c) 3.1.3.2.2.1 For Dual MAC Non-Compatible (▲d) variants
+When connected to Wireless Android Auto and Wireless CarPlay, the ICB is connected to a nearby access point, and the user is disconnected before activating Smartphone Connection mode.
+
+For the following cases where the current Wi-Fi mode is Network mode, confirm that the Wi-Fi STA connection will be disconnected before enabling Smartphone Connection mode.
+
+・When the ICB is connected to a nearby access point
+
+・In the case of Wireless CarPlay/ Wireless Android Auto connection via automatic connection
+
+
+
+In addition, when connecting to Wireless CarPlay by manual connection, if the current Wi-Fi mode is not Smartphone Connection mode, confirm that the user has enabled the Wi-Fi AP before enabling Smartphone Connection mode.
+
+For details on switching Wi-Fi mode when connecting Wireless CarPlay/Wireless Android Auto, refer to [Table.3.1.3.2.2_1 Changing Wi-Fi Mode When Authenticating Wireless CP/Wireless AA Connection].
+
+While the ICB is connected to a nearby access point, confirm the disconnection to the user before enabling Smartphone Connection mode.
+
+For details on Wireless CarPlay and Wireless Android Auto, refer to the Software Requirements Specification _Smartphone Connection.
+
+
+
+Table.3.1.3.2.2_1 Changing the Wi-Fi Mode When Authenticating a Wireless CP/Wireless AA Connection
+
+
+
+
+Wireless CarPlay
+connectivity	Wireless Android Auto
+Connectivity
+Manual	Automatic	Manual	Automatic
+Current Wi-Fi mode
+
+
+Off
+
+①	-	-	-
+Smartphone Connection	-	-	-	-
+Network
+
+Access point not connected	①	②	-	②
+Access point connected	①②	②	②	②
+(1): User confirmation to enable Wi-Fi AP
+
+(2): User confirmation that the Wi-Fi STA connection will be disconnected
+
+(▲c) 3.1.3.2.2.2 For Dual MAC compatible (▲d) variants
+(▲e) If the Wi-Fi STA function is connected to an AP in the 5GHz band, the user should confirm that the Wi-Fi STA connection will be disconnected before enabling the Wi-Fi AP function.
+
+In addition, when connecting to Wireless CarPlay by manual connection, if the current Wi-Fi AP function is not turned on, confirm that the user has enabled the Wi-Fi AP function before enabling the Wi-Fi AP function.
+
+For details on switching Wi-Fi mode when connecting Wireless CarPlay/Wireless Android Auto, refer to [Table.3.1.3.2.2_2 Changing Wi-Fi AP when Authenticating Wireless CP/Wireless AA Connection].
+
+For details on Wireless CarPlay and Wireless Android Auto, refer to the Software Requirements Specification _Smartphone Connection.
+
+
+
+Table.3.1.3.2.2_2 Wi-Fi AP Changes During Wireless CP/Wireless AA Connection Authentication
+
+
+
+
+Wireless CarPlay connectivity	Wireless Android Auto Connectivity
+Manual	Automatic	Manual	Automatic
+Current Wi-Fi APs
+
+
+Off
+
+Wi-Fi STA connection status
+
+Connected in
+the 5GHz band
+
+①②	②	②	②
+Other than
+the above
+
+①	-	-	-
+On
+Wi-Fi STA connection status
+Connected in
+the 5GHz band
+
+②	②	②	②
+Other than
+the above
+
+-	-	-	-
+(1): User confirmation to enable Wi-Fi AP
+
+(2): User confirmation that the Wi-Fi STA connection will be disconnected
+
+ 
+
+3.1.3.2.3 Alexa
+Alexa will enable Network mode after confirming the disconnection to the user when launching the Wi-Fi settings app while connected to Wireless CarPlay/Wireless Android Auto.
+
+For more information about Alexa, see _Alexa Software Request Specification.
+
+
+
+ 3.1.3.2.4 Connection Guide
+When you start the Wi-Fi settings app from the Connection Guide screen, Network mode is automatically enabled.
+
+Wi-Fi STA devices (including Wireless CarPlay/Wireless Android Auto devices) While Wireless CarPlay/Wireless Android Auto is connected, confirm the disconnection to the user before enabling Network mode.
+
+For details on the Connection Guide screen, see [3.1.4.8.1 Connection Guide Screen].
+
+
+
+3.1.3.3 Switching by User Switching
+When switching from a guest user to a general user, change the operating state of the Wi-Fi (▲c) function according to the Wi-Fi (▲c) status setting value.
+
+However, it does not change while the background processing of [3.1.3.2 Switching by Background Processing] is performing.
+
+After the background processing is completed, change the operating state of the Wi-Fi (▲c) function according to the Wi-Fi (▲c) state setting value that is maintained if necessary.
+
+3.1.3.4 Wi-Fi (▲c) State Settings
+The Wi-Fi (▲c) state setting value is retained even after ACC OFF and +B OFF.
+
+When starting Wi-Fi with ACC ON, the operating state of Wi-Fi (▲c) is determined according to the Wi-Fi (▲c) state setting value that was held.
+
+The factory Wi-Fi mode setting is Network mode.
+
+                             (▲c) For Dual MAC capable (▲d) variants, the Wi-Fi network setting value is enabled and the Wi-Fi AP setting value is disabled.
+
+(▲c) For Dual MAC capable (▲d) variants, (▲u ) the Wi-Fi network and Wi-Fi AP setting values are enabled.
+
+If the Wi-Fi (▲c) state setting value is switched from the Wi-Fi setting by user operation, the Wi-Fi (▲c) state setting value is updated and the user is notified that the setting has been updated.
+
+
+
+If the Wi-Fi (▲c) state setting is automatically switched in the background due to the request of another function, update the Wi-Fi (▲c) state setting value that is being held.
+
+However, since the Wi-Fi (▲c) state setting value switching by the OTA function is a temporary switch, the Wi-Fi (▲c) state setting value that you hold will not be updated.
+
+
+
+If the Wi-Fi (▲c) state setting value is changed by a guest user, the change is discarded when the user switches to a general user and the guest user ends.
+
+
+
+For the initial value of the setting and the initialization conditions, refer to [5.1 Wi-Fi State Settings Items].
+
+3.1.3.5 Operation when Background Wi-Fi (▲c) Operating State Changes
+Wireless CarPlay/Wireless Android Auto connection and OTA background processing change the operating state of Wi-Fi (▲c) in the background.
+
+If the Wi-Fi (▲c) operating state is changed in the background while the Wi-Fi screen is being displayed (▲c), the screen display is updated according to the Wi-Fi operating state.
+
+(▲f) For update details, refer to Table 3.2.5_2 Wi-Fi State Transition Table.
+
+For screen display contents, refer to [Screen display specification_1804_Wi-Fi (Station)].
+
+3.1.4 Wi-Fi STA Function
+The ICB supports the Wi-Fi STA function to provide a function to connect to the available Internet around the vehicle.
+
+The Wi-Fi STA function provides the following functions.
+
+- Wi-Fi AP scanning
+
+- Connecting to a Wi-Fi AP
+
+- Disconnect Wi-Fi AP
+
+- Deleting a registered Wi-Fi AP
+
+- Automatic reconnection to Wi-Fi AP
+
+3.1.4.1 Scanning Wi-Fi APs [SR-180400-WFS-02] 1804_Wi-Fi_1.00_WIFI-01-01.07 1804_Wi-Fi_1.00_WIFI-01-02.14 1804_Wi-Fi_1.00_WIFI-01-01.08
+ICB周辺のWi-Fi APをスキャンし、検出したWi-Fi APを一覧に表示する。
+
+Networkモード(▲c)(Dual MAC対応(▲d)バリアントの場合はWi-Fi STA機能)が有効中、Wi-Fi APのスキャンを実施する。
+
+
+
+TSU搭載車において、Wi-Fi APで動作するTSUを検出した場合は、除外する。
+
+TSUの同一判定は、TSUから取得したSSIDを使用し、検出したWi-Fi APのSSIDがTSUと同一であった場合に除外する。
+
+参考情報
+
+同一判定に使用する情報はMACアドレスが最適であるが、TSUにMACアドレスを取得するインターフェースがないため、SSIDを使用する。
+
+
+
+(1)Wi-Fi APのスキャン
+
+(a)自動再接続のためにWi-Fi APをスキャンする。
+
+自動再接続の詳細は[3.1.4.5 .Wi-Fi APへの自動再接続]を参照。
+
+(b)Wireless Network画面の表示中は、10秒間隔で自動的に再スキャンする。
+
+検出したWi-Fi APは順次リストに表示する。
+
+再スキャン時に見つからなかったWi-Fi APは一覧から削除し、上詰めで表示する。
+
+(▲e) (c) For Dual MAC compatible variants, the following limitations occur:
+
+
+
+If the Wi-Fi AP function is connected and using the 5GHz band, temporarily disconnect the Wi-Fi AP function during scanning.
+
+
+
+
+The above temporary disconnection will be restored when the AP connection in the 2.4GHz band is completed or when the Wireless Network screen ends.
+
+
+(2) Wi-Fi AP scan results
+
+(a) The order of the Wi-Fi APs displayed in the list on the Wireless Network screen is as follows.
+
+1. Connection Status
+
+2. registration status
+
+2-1. Registered Wi-Fi AP Detected by Scan
+
+2-2. Unregistered Wi-Fi AP Detected by Scan
+
+3. Communication speed
+
+4. Field Strength
+
+5. SSID Name Order
+
+*For information on registering a Wi-Fi AP, see [3.1.4.2 Connecting to a Wi-Fi AP]
+
+
+
+(▲e) (b) For Dual MAC compatible variants, the following limitations occur:
+
+
+
+If the Wi-Fi AP function is connected and using the 5GHz band, the AP in the 5GHz band cannot be selected from the scan results.
+
+
+
+
+
+
+Figure.3.1.4.1_1 Wireless Network screen
+
+The figure is an example to illustrate the function, and refer to [Screen Display Specification _1804_Wi-Fi (Station)] for the content of the screen display.
+
+
+
+Table.3.1.4.1_1 List Items
+
+(1)	Field Strength	
+Displays the field strength of the target Wi-Fi AP with the icon shown in [3.1.7 Wi-Fi Status Indication in the Indicator Area] - [Table.3.1.7_1 Field Strength Icons]
+
+(2)	Wi-Fi AP Name	View the SSID of the Wi-Fi AP found through search.
+(3)	Connection status	
+View the connection status of the Wi-Fi AP in question.
+・Disconnect → (hidden)
+・Connection process → "Connecting"
+・Registered → "Remembered"
+・Connection completed → "Connected"
+
+(4)	Searching icon	
+Display an icon to indicate that the Wi-Fi AP is being scanned.
+
+(5)	Security	
+Displays the presence or absence of security settings for Wi-Fi APs found through search.
+
+
+
+3.1.4.2 Connecting to a Wi-Fi AP [SR-180400-WFS-03] 1804_Wi-Fi_1.20_WIFI-09-06.01 1804_Wi-Fi_1.20_WIFI-09-06.021804_Wi-Fi_1.20_WIFI-09-06.03 1804_Wi-Fi_1.20_WIFI-09-06.04 1804_Wi-Fi_1.20_WIFI-09-06.05 1804_Wi-Fi_1.20_WIFI-09-06.06 1804_Wi-Fi_1.20_WIFI-09-06.07 1804_Wi-Fi_1.20_WIFI-09-06.08 1804_Wi-Fi_1.20_WIFI-09-06.09 1804_Wi-Fi_1.20_WIFI-09-06.10 1804_Wi-Fi_1.20_WIFI-09-06.11 1804_Wi-Fi_1.20_WIFI-09-06.12 1804_Wi-Fi_1.20_WIFI-09-06.13
+Select the Wi-Fi AP detected by the scan and start the connection.
+
+
+
+Figure.3.1.4.2_1 Connecting to a Wi-Fi AP
+
+The figure is an example to illustrate the function, and refer to [Screen Display Specification _1804_Wi-Fi (Station)] for the content of the screen display.
+
+
+
+For an image of the operation related to connecting a Wi-Fi AP, see [Figure.3.1.4.2_2 Connecting to a Wi-Fi AP Completed].
+
+For information on the items that can be configured for connecting a Wi-Fi AP, refer to [5.2 Wi-Fi AP Settings for Wi-Fi STA Function].
+
+
+
+(1) Select an unregistered Wi-Fi AP from any Wi-Fi AP detected by the scan to display the Network connection screen.
+
+Select a registered and connected Wi-Fi AP to display the Network Disconnect screen.
+
+On the Network connection screen, you can enter a password and change the settings of the Honda Update license.
+
+The Network disconnection screen allows you to change the settings of the Honda Update license.
+
+If the selected Wi-Fi AP is registered and not connected, the connection process will begin without transitioning from the Wireless Network screen.
+
+
+
+Guest Users may change the settings of the Honda Update license only for access points newly registered by the guest users.
+
+
+
+(2) If the selected Wi-Fi AP is secured, the password input screen for authentication is displayed.
+
+For information on entering a password, see 3.1.4.6 Security of Wi-Fi STA Functions.
+
+The entered password is displayed in the default state, but it is also possible to disable the hidden display.
+
+If the security of the selected Wi-Fi AP is Open, the password input is hidden.
+
+(▲k) In addition, if the security is not supported as an ICB, the password input will be hidden.
+
+
+
+Passwords are entered according to the security type.
+
+If the password does not match the input rules, the registration and connection are deemed to have failed, and an error is notified.
+
+For password input rules for each security type, refer to [3.1.4.6 Security of Wi-Fi STA Function].
+
+
+
+(3) In the OTA implementation model, the settings of the Honda Update license can be changed.
+
+In the non-OTA model, the Honda Update license settings cannot be changed.
+
+For details on OTA, see [Software Request Specification _OTA].
+
+
+
+(4) When you connect on the Network connection screen, save the information of the selected Wi-Fi AP and make it a registered Wi-Fi AP, and start the connection.
+
+When connecting to a Wi-Fi AP, notify the user that the connection is in progress.
+
+For details on the Wi-Fi AP information to be registered, refer to [5.2 Wi-Fi AP Settings for Wi-Fi STA Function].
+
+
+
+If the connection with the Wi-Fi AP is successful, notify the user that it was successful.
+
+
+
+
+
+Figure.3.1.4.2_2 Connection to Wi-Fi AP Completed
+
+The figure is an example to illustrate the function, and 0 refers to [Screen Transition Specification_1804_Wi-Fi (Station)] for screen transition content.
+
+
+
+It is not possible to connect to multiple Wi-Fi APs at the same time.
+
+If you have already connected to any Wi-Fi AP and connected to another Wi-Fi AP,
+
+Disconnect the connected Wi-Fi AP and connect it to the Wi-Fi AP to which it is connected.
+
+
+
+Even if you update the registration information on the Network Disconnect screen, the connection/disconnection process is not performed.
+
+If you delete registration on the Network Disconnect screen, if it is connected to the Wi-Fi AP, it will be disconnected and the registration information will be deleted.
+
+
+
+(5) If the connection process is not completed within 10 seconds, the connection process shall be stopped.
+
+If the connection authentication with the Wi-Fi AP is not approved (connection failed) within 10 seconds, the user is notified that the connection has failed.
+
+*Connection processing and authentication only refer to the connection between the ICB and the surrounding access point, and does not include user authentication using the Captive Portal function.
+
+
+
+(6) a) If the target Wi-Fi AP is not detected in the scan, it is also possible to add a Wi-Fi AP from the Add Network screen.
+
+The Network Add screen allows you to change the settings of SSID, security type, password, and Honda Update license.
+
+
+
+
+
+Figure.3.1.4.2_3 Network Addition Screen
+
+The figure is an example to illustrate the function, and refer to [Screen Display Specification _1804_Wi-Fi (Station)] for the content of the screen display.
+
+
+
+If the SSID is not entered, the save operation is prohibited.
+
+Other behaviors are similar to the Network connection screen.
+
+b) If the Passpoint enabled desired  Wi-Fi AP is not detected by scanning, it is also possible to add that from the Add Network (Advance) screen,
+
+This screen allows you to change the settings of the SSID, Security, Authentication, Anonymous ID, Domain, CA Certificate, User Certificate, Phase 2 authentication, user name, passwords.
+
+    
+
+Fig.3.1.4.2_3 b Add Network (Advance) Screen
+
+(7) If the Wi-Fi AP information fails to be saved after connecting to the Network, an error message is displayed.
+
+
+
+Figure.3.1.4.2_4 Network Registration Error
+
+The figure is an example to illustrate the function, and refer to [Screen Display Specification _1804_Wi-Fi (Station)] for the content of the screen display.
+
+
+
+(8) If an error occurs in the Wi-Fi AP connection, return to the Wireless Network screen and reconnect.
+
+
+
+(9) If you have activated Wi-Fi settings from an external app, return to the external app from which it was launched after successfully connecting to the Wi-Fi AP.
+
+
+
+(10) The Wi-Fi AP registered by the guest user will be switched to a general user, and the registered information will be deleted when the guest user ends.
+
+
+
+(11) If the Wi-Fi AP to which the destination is connected supports the Captive Portal function, the user authentication screen is displayed, and network communication is enabled after authentication.
+
+3.1.4.3 Disconnecting the Wi-Fi AP [SR-180400-WFS-04]
+Initiate the disconnection process for the connected Wi-Fi AP.
+
+
+
+(1) When you select a connected Wi-Fi AP on the Wireless Network screen, the Network Disconnect screen is displayed, and when you delete it, the Wi-Fi AP is disconnected.
+
+
+
+(2) Wi-Fi APs disconnected by ICB operation will have their registration information deleted and will not be subject to automatic reconnection.
+
+
+
+(3) Even if the cutting process is not completed successfully within 10 seconds, the ICB will complete the cutting.
+
+
+
+(4) If the user successfully disconnects from the Wi-Fi AP by user operation, notify the user that it has been disconnected.
+
+
+
+(5) The guest user may delete only the access points newly registered by the guest user.
+
+
+
+
+
+Figure.3.1.4.3_1 Wi-Fi AP Disconnect
+
+The figure is an example to illustrate the function, and for the content of the screen transition, refer to the [Screen Transition Specification_1804_Wi-Fi (Station)].
+
+
+
+3.1.4.4 Deleting a Registered Wi-Fi AP [SR-180400-WFS-05]
+Registered Wi-Fi APs can be deleted by user operation.
+
+The deletion method is similar to disconnecting a Wi-Fi AP, so see [3.1.4.3 Disconnecting a Wi-Fi AP] for details.
+
+If you choose to remove the registration of a connected Wi-Fi AP, disconnect it first and then delete the registration.
+
+
+
+Retrieves the registered Wi-Fi AP information and lists the names of the Wi-Fi APs registered in the ICB.
+
+It does not specify the order in which the list should be displayed.
+
+When a registered Wi-Fi AP is selected, the network disconnect screen is displayed and the registration can be deleted.
+
+
+
+
+
+Figure 3.1.4.4_1 Displaying the Registered Network List Screen and Deleting a Registered Wi-Fi AP
+
+The figure is an example to illustrate the function, and for the content of the screen transition, refer to the [Screen Transition Specification_1804_Wi-Fi (Station)].
+
+
+
+3.1.4.5 Auto Reconnect to Wi-Fi AP [SR-180400-WFS-06] 1804_Wi-Fi_1.00_WIFI-02-01.07 1804_Wi-Fi_1.00_WIFI-02-01.05 1804_Wi-Fi_1.00_WIFI-02-01.06
+
+
+While the Wi-Fi STA function is active, the system automatically reconnects to the registered Wi-Fi AP.
+
+Automatic reconnection runs in the background and does not require the Wi-Fi screen to be displayed.
+
+
+
+(1) The trigger for starting automatic reconnection shall be as follows.
+
+・When ACC is turned on
+
+・When disconnecting a Wi-Fi AP while connected by user operation
+
+・In the event of an accidental disconnection while driving (decrease in electric field strength, failure, etc.)
+
+・Networkモード(▲c)(Dual MAC対応(▲d)バリアントの場合はWi-Fi STA機能)有効化時
+
+
+
+(2)接続時に必要な情報はICBが保持している情報を使用し、ユーザーの再入力は不要とする。
+
+
+
+(3)自動再接続に失敗した場合、成功するまで自動再接続処理を繰り返す。
+
+
+
+(4)Wi-Fi APのスキャン結果から、再接続可能なWi-Fi APが見つからない場合、再接続可能なAPが見つかるまでWi-Fi APのスキャンを継続する。
+
+
+
+(5)自動再接続の接続結果については、インジケータエリアの表示にて確認する。
+
+
+
+(6)自動再接続するWi-Fi APの接続優先順位はAOSP標準に準拠する。
+
+
+
+(7) When supporting Dual MAC, there are the following restrictions. (▲g)
+
+
+
+・If the Wi-Fi AP function is connected and using the 5GHz band, the AP in the 5GHz band is not eligible for automatic reconnection.
+
+
+
+
+
+・If the Wi-Fi AP function is using the 2.4GHz band while connected, automatic reconnection will not be performed.
+
+
+
+
+
+3.1.4.6 Security of Wi-Fi STA Function [SR-180400-WFS-14]
+When connecting to Wi-Fi APs, security must be set up to prevent unauthorized access from the outside.
+
+
+
+(1) The types of security for connecting to Wi-Fi APs are shown in [Table.3.1.4.6.1_1 Wi-Fi STA Function Security Types].
+
+
+
+Table.3.1.4.6.1_1 Security Types of Wi-Fi STA Functions
+
+Security Type	Password Character Count
+Open (no security)	None
+WEP64	
+5 characters, 10 characters (*), 13 characters, 26 characters (*)
+*Limited to cases where the input characters are [0~9], [a~f], [A~F].
+
+WEP128
+WPA-PSK/TKIP
+
+WPA-PSK/AES
+
+8~63 characters
+WPA2-PSK/TKIP
+
+WPA2-PSK/AES
+
+WPA3-SAE	8~128 characters
+(▲r) WPA2 / WPA3-(EAP - TLS)	certificate based authentication
+WPA2 / WPA3 - (EAP - TTLS)	8 ~ 128 characters
+*The lower the level, the higher the security strength.
+
+
+
+As an ICB, it corresponds to the above security. The actual security used depends on the configuration of the Wi-Fi AP.
+
+If the Wi-Fi AP supports multiple security types, the ICB selects and uses the most secure type.
+
+
+
+(2) When connecting to an unregistered Wi-Fi AP, enter the security password on the Network connection screen or the Add Network screen.
+
+For text input, see [3.1.8 Character Input in Wi-Fi Settings].
+
+
+
+(3) Password entry shall follow the following rules.
+
+The display method when entering a password is set to hidden in the initial state, and it is also possible to display it normally by user operation.
+
+The numbers, letters, and symbols that can be used are as follows.
+
+・0~9 half-width numbers
+
+・Half-width English characters for a~z
+
+・A~Z half-width English characters
+
+・Half-width symbol (see [Table 3.1.4.6_2 Symbols that can be used with security passwords])
+
+
+
+Table.3.1.4.6_2 Symbols Available in Security Passwords
+
+9/9
+Symbols
+!	)	;	]
+"	*	< 	^
+#	+	=	_
+$	(▲v),
+> 	`
+%	-	(▲v)?	{
+&	(▲v).	@	|
+'	/	[	}
+(	:	
+\(▲j) (backslash)
+
+~
+Space	
+
+
+
+
+3.1.4.7 Initially Registered Honda Affiliated Wi-Fi AP [SR-180400-WFS-15]
+Honda-affiliated Wi-Fi APs are initially registered with ICB.
+
+Honda-affiliated Wi-Fi APs can be selected and connected in the same way as regular Wi-Fi APs, but settings cannot be changed or Wi-Fi APs disconnected.
+
+If you select a Honda-affiliated Wi-Fi AP, the network disconnect screen will be displayed, but changing or deleting settings is prohibited.
+
+
+
+
+
+Figure.3.1.4.7_1 Network disconnection screen when Honda affiliated Wi-Fi AP is selected
+
+The figure is an example to illustrate the function, and refer to [Screen Display Specification _1804_Wi-Fi (Station)] for the content of the screen display.
+
+
+
+3.1.4.8 User Promotion for the Use of Wi-Fi STA Connections [SR-180400-WFS-16]
+Inform users that an Internet connection is required to use various applications and encourage them to connect to the network.
+
+
+
+3.1.4.8.1 Connection Guide Screen
+ユーザーに対してネットワーク接続を促し、ネットワーク接続のために本体のWi-Fi設定アプリ、Wi-Fi Hotspotアプリ(AT&T)への導線を表示する。
+
+Wi-Fi Hotspotアプリについては[ソフト要求仕様書_TSU Function]を参照。
+
+
+
+
+
+図.3.1.4.8_1 Connection Guide画面
+
+The figure is an example to illustrate the function, and refer to [Screen Display Specification _1804_Wi-Fi (Station)] for the content of the screen display.
+
+
+
+(1) Select Connection Guide from Connection Settings to launch the Connection Guide screen.
+
+
+
+(2) Select [Wi-Fi Network] to launch the Wi-Fi Settings app.
+
+When you start the Wi-Fi settings app, enable Network mode.
+
+Wi-Fi STA devices (including Wireless CarPlay/Wireless Android Auto devices) While Wireless CarPlay/Wireless Android Auto is connected, confirm the disconnection to the user and then enter Network mode (▲h) (Wi-Fi STA function for Dual MAC compatible variants) to enable
+
+
+
+(3) Select [AT&T Hotspot] to launch the Wi-Fi Hotspot app.
+
+If the Wi-Fi Hotspot app is not supported, disable it and notify the user that the Wi-Fi Hotspot app is unavailable.
+
+
+
+(4) It is possible to switch between displaying or not displaying the Connection Guide Notification by user operation.
+
+When you are a guest user, the checkbox is hidden and you cannot change the settings.
+
+For information on Connection Guide Notification, see [3.1.4.8.2 Notification Notification].
+
+
+
+3.1.4.8.2 Notification
+Display a notification to the user prompting them to connect to the network.
+
+
+
+
+
+Figure.3.1.4.8_2 Connection Guide Notification
+
+The figure is an example to illustrate the function, and refer to [Screen Display Specification _1804_Wi-Fi (Station)] for the content of the screen display.
+
+
+
+(1) Determine whether or not to display the notification based on the connection status of the Wi-Fi STA, the data plan subscription status of TSU, and the 4G network status of TSU.
+
+If TSU is not supported, the connection status of the Wi-Fi STA determines whether the notification should be displayed.
+
+Also, if the user sets the setting not to display the notification on the Connection Guide screen, the notification will not be displayed.
+
+
+
+Table.3.1.4.8_2 Connection Guide Notification Display Conditions (TSU Support)
+
+TSU Data Plan Subscription Status	Under contract	Uncontracted
+Wi-Fi STA connection status	Connecting	Not connected	Connecting	Not connected
+4G network status of TSU
+
+Within Range	×	×	×	〇
+Out of range	×	〇	×	〇
+×: Don't
+display notifications 〇: Show notifications
+
+
+
+Table.3.1.4.8_3 Connection Guide Notification Display Conditions (TSU Not Supported)
+
+Wi-Fi STA connection status
+Connecting	Not connected
+×	〇
+×: Don't
+display notifications 〇: Show notifications
+
+
+
+(2) Display a notification 60 to10 seconds after the user login and authentication are completed while the ICB is in operation.
+
+
+
+(3) Press Notification to launch the Connection Guide screen.
+
+
+
+(4) If you connect to a Wi-Fi STA connection or a TSU network, delete the notification.
+
+3.1.5 Wi-Fi AP Function [SR-180400-WFS-07]
+It supports Wi-Fi AP function to connect the ICB and the Wi-Fi STA device owned by the user.
+
+The Wi-Fi AP function provides the following functions:
+
+- Wi-Fi AP settings
+
+- Wi-Fi STA device display during connection
+
+
+
+By enabling the Wi-Fi AP function, the ICB acts as an AP and provides a local network for connection with Wi-Fi STA devices.
+
+The trigger for the start of the Wi-Fi AP function and the operation after the start are shown in [Table.3.1.5_1 Operation after the start of the Wi-Fi AP function].
+
+Table.3.1.5_1 Wi-Fi AP Function Initiation and Post-Startup Operation
+
+Opportunity to start	
+Activate Smartphone Connection mode by user interaction, or receive a request to start connecting Wireless CarPlay or Wireless Android Auto.
+
+Connected devices	
+It is possible to connect devices with Wireless CarPlay or Wireless Android Auto and regular Wi-Fi STA devices at the same time.
+
+Operating Restrictions	
+For DFS-enabled channels, it takes 1 minute for the Wi-Fi AP to become available after starting Smartphone Connection mode to
+check the signal around the vehicle according to the DFS mechanism.
+
+
+
+参考情報
+
+TSU搭載車は、TSUがWi-Fi AP機能を実行し、テザリング機能を提供する。
+TSUについては、[ソフト要求仕様書_TSU Function]を参照。
+
+
+
+3.1.5.1 Wi-Fi AP設定
+ICBからWi-Fi AP機能のAP設定を行う。
+
+
+
+Wi-Fi AP機能に関する内容をユーザー操作にて設定変更、保存することができる。
+
+なお、SSIDステルス機能は無効とし、設定不可とする。
+
+詳細は[5.3 Wi-Fi AP機能の設定項目]を参照。
+
+
+
+接続中のWi-Fi STA機器がある時に設定を変更すると、接続情報に差分が発生するため、設定変更は不可とし、データを表示するのみとする。
+
+設定変更不可の状態でSSID、セキュリティ種別、パスワードを変更しようとした場合は、エラーBEEPを吹鳴し、設定変更が不可の旨をユーザーに通知する。
+
+また、パスワードが入力規則を満たさない場合は、保存を禁止する。
+
+パスワードの入力規則は、[3.1.5.3 Wi-Fi AP機能のセキュリティ]を参照。
+
+
+
+ゲストユーザーによって設定値を変更した場合は、一般ユーザーへユーザー切替ゲストユーザー終了時に変更内容を破棄する。
+
+
+
+
+
+図.3.1.5.1_1 Wi-Fi AP設定
+
+図は機能を説明するための例であり、画面表示内容については[画面表示仕様書_1804_Wi-Fi(Station)]を参照する。
+
+
+
+3.1.5.1.1 Advance WI-FI AP Settings
+
+1) When saving new settings for an external AP whose settings have not been saved, set the SSID according to < New SSID settings for the destination external AP>. 
+
+2) If you want to save a new external AP whose settings have not been saved, set the password according to < Setting a new external AP connection authentication password>.
+
+3) The characters shown in < Character restrictions for external AP connection authentication password > must not be entered for the external AP connection authentication password.
+
+4) When the new setting screen for an external AP is displayed, you can switch between temporarily displaying or temporarily hiding the password according to < Switching the display of the input password>.
+
+5) When setting up a new external AP with unsaved settings, the user must set the encryption method for Wi-Fi communication when connecting according to #17 Setting the encryption method for communication with external AP devices (Advanced) on the attached Add Network(Advance) image.
+
+6) When setting up a new external AP whose settings have not been saved, the user must set the authentication method for Wi-Fi communication when connecting according to #7 New setting of authentication method with external AP device (Advanced) on the attached Add Network(Advance) image.
+
+7) When setting up a new external AP with unsaved settings, the user must set the anonymous ID for Wi-Fi communication when connecting according to #9 New setting of external AP device and anonymous ID (Advanced) on the attached Add Network(Advance) image.
+
+8) When setting up a new external AP whose settings have not been saved, the user must set the domain name for Wi-Fi communication when connecting according to #11 New domain name setting for external AP device (Advanced) on the attached Add Network(Advance) image.
+
+9) When setting up a new external AP with unsaved settings, if a CA certificate is selected by user operation, the CA certificate for Wi-Fi communication at the time of connection will be listed as per #13 New setting of CA certificate with external AP device (Advanced) on the attached Add Network(Advance) image.
+
+When a CA certificate displayed in the list is selected by user operation, the selected CA certificate must be configured.
+
+10) When setting up a new external AP whose settings have not been saved, the user must set the internal authentication method for Wi-Fi communication when connecting according to #17 New setting of internal authentication[User Certificate] method with external AP device (Advanced) on the attached Add Network(Advance) image.
+
+11) When setting up a new external AP with unsaved settings, the user must set the username for Wi-Fi communication when connecting according to #19 New username setting for external AP device (Advanced) on the attached Add Network(Advance) image.
+
+12) Follow < Saving new external AP settings> to save new settings for the external AP.
+
+
+
+3.1.5.2 接続中のWi-Fi STA機器表示
+ICBのAPに接続中のWi-Fi STA機器の一覧を表示する。
+
+Wi-Fi STA機器の接続時、及び切断時にSTA機器一覧の更新を行う。
+
+
+
+接続中のWi-Fi STA機器のデバイス名、及び接続種別に応じたアイコンを一覧表示する。
+
+接続種別は、Wireless CarPlay/Wireless Android Auto/その他の3種類とする。
+
+デバイス名が取得できなかった場合は、『No Device Name』を表示する。
+
+
+
+
+
+図.3.1.5.2_1 Wireless AP画面
+
+図は機能を説明するための例であり、画面表示内容については[画面表示仕様書_1804_Wi-Fi(Station)]を参照する。
+
+
+
+一覧からWi-Fi STA機器を押下すると、接続したWi-Fi STA機器のIPアドレス及びMACアドレスを表示する。
+
+
+
+図.3.1.5.2_2 デバイス詳細画面
+
+図は機能を説明するための例であり、画面表示内容については[画面表示仕様書_1804_Wi-Fi(Station)]を参照する。
+
+
+
+3.1.5.3 Wi-Fi AP機能のセキュリティ
+Wi-Fi AP機能において、外部からの不正なアクセスを防ぐためにセキュリティを設定する必要がある。
+
+暗号化方式は、安全性の確保のためにWPA2 Personal（WPA2-PSK)、WPA3-SAE Transition Mode (WPA2-PSK / WPA3-SAE)、WPA3 Personal（WPA3-SAE) に対応し、他の暗号化方式は適用しない。
+
+セキュリティ強度の高い「WPA3-SAE」をサポートしており、現在普及している「WPA2-PSK」との互換性のある、WPA3-SAE Transition Mode（WPA2-PSK / WPA3-SAE）をデフォルトの暗号化方式とする。
+
+
+
+セキュリティパスワードは以下の通りとする。
+
+
+
+表3.1.5.3_1 Wi-Fi AP機能のセキュリティ種別
+
+セキュリティ種別	パスワードの入力規則	初期パスワード
+WPA2 Personal（WPA2-PSK）	
+・16～63文字
+
+・英字の大文字、英字の小文字、数字をそれぞれ最低1文字以上含む
+
+
+
+
+
+下記の情報を利用して生成するランダムな文字列
+
+・シリアルナンバー
+・そのICBにおいて、初めてAP機能が起動された時の日時(マイクロ秒)
+・乱数
+
+
+
+WPA3-SAE Transition Mode
+ (WPA2-PSK / WPA3-SAE)
+
+WPA3 Personal（WPA3-SAE）
+
+
+*For numbers, letters, and symbols that can be used for security passwords, see [3.1.4.6 Security of Wi-Fi STA Function].
+
+
+
+3.1.5.4 Maximum Number of Wi-Fi STA Devices That Can Be Connected
+The number of Wi-Fi STA devices that can be connected to the Wi-Fi AP function is 10.
+
+
+
+3.1.6 Function to Use Wi-Fi [SR-180400-WFS-08] 1804_Wi-Fi_1.20_WIFI-09-06.06
+The following is an overview of other features that use Wi-Fi.
+
+This chapter describes the use of the Wi-Fi function of the ICB and does not consider the use of TSU.
+
+
+
+・V2H
+
+As a means of connecting to the Internet, you can choose Network mode (▲c) (Wi-Fi STA function in the case of Dual MAC compatible (▲d) variants), or Link Manager.
+
+For V2H, see [Software Requirements Specification _Alexa].
+
+
+
+・CarPlay
+
+As a means of connecting to Wireless CarPlay, use Smartphone Connection mode (▲c) (Wi-Fi AP function in the case of Dual MAC compatible (▲d) variants).
+
+For information on Wi-Fi operation during CarPlay (USB storage and Wireless), refer to [Software Requirements Specification_Smartphone Connection].
+
+
+
+・Android Auto
+
+As a means of connecting to Wireless Android Auto, use Smartphone Connection mode (▲c) (Wi-Fi AP function in the case of Dual MAC compatible (▲d) variants).
+
+For information on Wi-Fi operation in Android Auto (USB storage and wireless), refer to the Software Requirements Specification _Smartphone Connection.
+
+
+
+・OTA
+
+As a means of connecting to the Internet, you can choose Network mode (▲c) (Wi-Fi STA function in the case of Dual MAC compatible (▲d) variants), or Link Manager.
+
+For OTA, see [Software Requirements Specification _OTA].
+
+
+
+3.1.7 Wi-Fi Status Display in Indicator Area [SR-180400-WFS-09]
+In the indicator area of the header, the field strength icon according to the (▲c) running state of Wi-Fi is displayed.
+
+(▲c) For the Dual MAC compatible (▲d) variant, the Wi-Fi AP function indicator is not displayed. PJ01DEV01-89100 - [Request Specification QA] [WiFi] About the Wi-Fi field strength display in the header indicator area CLOSED
+
+For more information on the indicator area, see _Header of the Software Requirements Specification.
+
+
+
+The field strength icons used in the Wi-Fi function are summarized in the table.
+
+Table.3.1.7_1 Field Strength Icon
+
+Wi-Fi
+Capabilities
+
+
+
+Display area	Security	
+Field Strength
+
+Acquisition of field strength
+Out of
+range (disconnected)	-Less than 88 dBm
+-Less than 77 dBm
+-Less than 66 dBm
+-Less than 55 dBm
+-55dBm
+or more
+Wi-Fi STA Function	Indicators
+(Headers)	Yes/No	(hidden)	
+
+
+
+
+
+Wi-Fi AP to connect to
+List items in the
+Wi-Fi AP list	None	(hidden)	
+
+
+
+
+
+Wi-Fi AP detected
+Yes	(hidden)	
+
+
+
+
+
+Wi-Fi AP detected
+Wi-Fi AP Capabilities
+
+Indicators
+(Headers)
+
+―	
+
+
+Fixed display
+*RSSI value range is a tuning item.
+
+*The figure is an example to explain the function, and for the content of the screen display, please refer to [Screen Display Specification _1804_Wi-Fi (Station)].
+
+
+
+3.1.8 Character Input in Wi-Fi Settings [SR-180400-WFS-17]
+For character input in Wi-Fi settings, use the software keyboard.
+
+For more information about software keyboards, see _Software Keyboard in the Software Requirements Specification.
+
+The following is a summary of the cases of character input, as well as the inputType and imeOption of the software keyboard.
+
+
+
+
+表.3.1.8_1 文字入力のユースケースとinputType, imeOption
+
+
+
+
+SSID入力	(▲w) textVisiblePassword	(▲w) (▲x) actionDone / actionNext 
+Password Entry	
+textPassword textVisiblePassword
+
+actionDone
+On the screen where you can enter the SSID or password, select the text box for the SSID or password to go to the keyboard input screen.
+
+(▲w) Since SSID input only supports half-width alphanumeric characters, the keyboard should be fixed to English(UK) only even after language change. This behaviour of launching English(UK) keyboard even after language change is applicable to all editable fields in Wi-Fi application. 
+
+(▲x)  Dynamic IME Action Behavior (Android Platform Standards):
+
+1. Single Input Field
+   If only one text input field is visible and enabled:
+   → Keyboard displays: IME_ACTION_DONE
+
+2. Multiple Input Fields
+If multiple text input fields are visible and enabled:
+→ First & intermediate fields: IME_ACTION_NEXT
+→ Last field only: IME_ ACTION_DONE
+
+The IME action updates dynamically based on visible/enabled field count.
+This applies to ALL Wi-Fi Settings screens containing editable text fields.
+
+
+
+Figure.3.1.8_1 Example of Keyboard Input Screen
+
+The figure is an example to illustrate the function, and refer to [Screen Display Specification _1804_Wi-Fi (Station)] for the content of the screen display.
+
+
+
+If a string has already been entered in the text box from which the transition originates, it is reflected in the text box on the keyboard input screen.
+
+In the case of a password text box, switch the hidden or normal display of the text box on the keyboard input screen depending on the status of the password display checkbox.
+
+After transitioning to the keyboard input screen, the software keyboard is displayed immediately, so the text box is selected in the default state.
+
+After entering a string, press the [Done] button on the keyboard to return to the screen from which the transition originates, and reflect the entered string in the SSID or password.
+
+When you press the [BACK] key, you return to the original screen, but the entered string is discarded and the original string is retained.
+
+If the non-input character is pressed, it will not be reflected in the input field.
+
+For input restrictions, refer to [5.2 Wi-Fi AP Settings for Wi-Fi STA Function] and [5.3 Wi-Fi AP Function Settings].
+
+3.1.9 Breadcrumbs in Wi-Fi Settings [SR-180400-WFS-18]
+At the top of each screen in the Wi-Fi settings, a breadcrumb is displayed.
+
+For more information about the breadcrumbs, see Software Requirements _UI Components - 3.1.4 Breadcrumbs.
+
+
+
+
+3.2 Function Explanation and State Transitions
+3.2.1 Operation Restrictions When Driving [SR-180400-WFS-12]
+Restrictions on driving operations during Wi-Fi follow the basic policy
+
+Wi-Fi PP (Passpoint) is one type of Wi-Fi STA functions.
+
+All the below-listed driver operation restrictions will also be applicable to Wi-Fi PP (Passpoint) function.
+
+For details on driving operation restrictions, refer to [Software Request Specification_Driving Operation Restrictions].
+
+
+
+3.2.1.1 Driving operation restrictions for Wi-Fi STA function
+3.2.1.1.1 Scanning Wi-Fi APs
+If the vehicle is moving, restrict the operation of the Wi-Fi AP scan result list.
+
+In addition, the display of unconnected access points in the list of scan results will not be updated while driving.
+
+Updating the display of the connected access point is not restricted while driving.
+
+3.2.1.1.2 Connecting to a Wi-Fi AP
+If the vehicle is moving, the system notifies that the function is not available when operating the Wi-Fi AP connection.
+
+▲t There are restrictions on changing settings using the Honda Update license while driving. It is not permitted to use the Honda Update license while the vehicle is in motion.
+
+Restrictions on driving operations on the user authentication screen of the Captive Portal function follow the AOSP standard.
+
+3.2.1.1.3 Disconnecting the Wi-Fi AP
+If the vehicle is in motion, the Wi-Fi AP disconnect operation notifies the user that the function is not available.
+
+3.2.1.1.4 Deleting a Registered Wi-Fi AP
+If the vehicle is in motion, the system notifies that the function is not available when selecting the registered Wi-Fi AP.
+
+3.2.1.1.5 Automatic Reconnection to Wi-Fi AP
+This function is not limited while driving.
+
+
+
+3.2.1.2 Driving Operation Restrictions for Wi-Fi AP Function
+3.2.1.2.1 Wi-Fi AP Settings
+If the vehicle is moving, the ICB notifies that the function cannot be used when changing the settings of the Wi-Fi AP.
+
+3.2.1.2.2 Starting the Wi-Fi AP Function
+This function is not limited while driving.
+
+3.2.2 Exception Actions
+There are no exceptions, so there is no description.
+
+3.2.3 Inoperable Conditions and Condition Definition Due to H/W Failure [SR-180400-WFS-21]
+For abnormal operation due to failure of the Wi-Fi chip, etc., refer to [3.2.4 Operation when an abnormality occurs].
+
+If the Wi-Fi function cannot be activated, it operates in OFF mode (▲c) (in the case of Dual MAC compatible (▲d) variants, each Wi-Fi function is disabled).
+
+3.2.4 Operation in the event of an anomaly [SR-180400-WFS-22]
+If an abnormality occurs in the activation of each Wi-Fi function or a Wi-Fi connection and the processing fails, the process will be stopped and the user will be notified that the process has failed.
+
+If there is no response, it will be timed out in 10 seconds and treated as a failure.
+
+3.2.5 Wi-Fi State Transition Table [SR-180400-WFS-23]
+The following is a transition of the Wi-Fi function.
+
+(▲c) 3.2.5.1 For Dual MAC Non-Compatible (▲d) Variants
+Table 3.2.5_1 Wi-Fi State Transition Table
+
+
+
+Current status	User-operated Wi-Fi mode switching	
+OTA background processing
+
+(ICB in operation)
+
+OTA background processing
+
+(Preparing for shutdown)
+
+Alexa
+
+Wireless CarPlay
+
+Wireless Android Auto
+
+Connection Processing
+
+Connection Guide Screen
+No.	
+Wi-Fi mode
+
+OFF Mode	Smartphone Connection mode
+Network Mode	Get Started	Finish	Get Started	Finish	Wi-Fi activation	Get connected	Cutting	Wi-Fi activation
+S1	
+OFF Mode
+
+×	
+Transition to S2
+
+Transition to S3	-	-	Transition to S3	×	×	Transition to S2
+*5
+×	Transition to S3
+S2	Smartphone Connection mode	
+Transition to S1
+*2
+
+×	Transition to S3
+*1	
+-
+
+-	Transition
+to S3*2
+×	※4	-	-	Transition
+to S3*62
+S3	Network Mode	Transition
+to S1	Transition to S2
+*3
+×	-	
+-
+
+-	
+-
+
+Transition to a pre-start state
+
+×	Transition to S2
+*53
+×	-
+-: No state transitions
+
+×: Cases that do not exist
+
+*1: If Wireless CarPlay/Wireless Android Auto is connected, confirm that the Wi-Fi STA device is disconnected, and if it is not connected, confirm that the AP will be disabled before transitioning
+.
+
+*2: If Wireless CarPlay/Wireless Android Auto is connected, confirm the disconnection with the user before transitioning.
+
+*3: Transition after confirming to the user that it will be disconnected from the access point
+
+*4: Only when Wireless CarPlay/Wireless Android Auto is connected, confirm the disconnection to the user and then switch
+to S3.
+
+No state transition if not connected
+
+*5: Depending on the current Wi-Fi mode and the connection status of the access point, the user will be confirmed before transitioning. See [3.1.3.2.2 Wireless CP/Wireless AA Connection Certification].
+
+*6: When a Wi-Fi STA device is connected to the ICB, it will be transferred after confirming the disconnection to the user.
+
+(▲c) 3.2.5.2 For Dual MAC (▲d) variants
+Table 3.2.5_2 Wi-Fi State Transition Table
+
+
+
+
+
+
+
+
+
+
+
+-：状態遷移無し
+
+×：存在しないケース
+
+(▲f)3.2.6 Dual MAC対応時の制限表示 [SR-180400-WFS-32] 1804_Wi-Fi_1.00_WIFI-01-01.061804_Wi-Fi_1.00_WIFI-01-02.131804_Wi-Fi_1.00_WIFI-04-01.071804_Wi-Fi_1.00_WIFI-04-01.101804_Wi-Fi_1.00_WIFI-04-01.081804_Wi-Fi_1.00_WIFI-A1-01.02
+(▲m) The Wi-Fi chip used in the product is not a Dual MAC, but a Single MAC. Due to the limitations of the Wi-Fi module, if you use the same frequency band and the same channel for AP/STA, it will conflict with Apple requirements.
+(▲m) Since separate frequency bands do not violate Apple requirements, Dual MAC is realized by using the 2.4GHz band and 5GHz band separately for AP/STA.
+
+This limitation does not allow the same frequency bands to be used simultaneously with AP / STA, so if the user tries to perform such an operation, it will display a message telling them that there is a limitation.
+
+The figure is an example to illustrate the function, and refer to [Screen Display Specification _1804_Wi-Fi (Station)] for the content of the screen display.
+
+Table 3.2.6_1 Dual MAC Restriction Display List (STA)
+
+Current status	User Actions
+Wi-Fi STA Function
+
+CP/AA Device Connection (5GHz)	
+CP/AA device connection (2.4GHz) *Not available
+
+2.4GHz Connection Status	No restrictions	-
+5GHz Connection Status	
+Display a dialog to confirm that the STA is disconnected
+
+
+
+-
+
+Table 3.2.6_2 Dual MAC Restriction Display List (AP)
+
+Current status	User Actions
+Wi-Fi AP Capabilities
+
+Start STA Search	STA Connection (2.4GHz)	STA Connection (5GHz)
+2.4GHz Connection Status
+
+*None
+
+-	-	-
+5GHz Connection Status	
+Displays a dialog confirming that the AP is temporarily disconnected until the STA connection is completed
+
+
+
+No restrictions
+
+Indicates that the selected STA cannot be connected while the AP is connected
+
+
+
+
+
+3.3 Interrupt Operation to Other Functions [SR-180400-WFS-24]
+The interrupt priority of the Wi-Fi function follows the "Activity display".
+
+For the specification of the interrupt display, refer to [Basic Operation _HMI Software Request Specification] - [3.3.1.4 Screen Interrupt Basic Specification].
+
+3.4 Wi-Fi Passpoint [SR-180400-WFS-33]  1804_WI-FI_1.20_WIFI-01-02.11 1804_WI-FI_1.20_WIFI-01-02.12
+3.4.1 - Introduction to Wi-Fi Passpoint 
+
+WiFi PP is a Wi-Fi Alliance (WFA) protocol that enables ICB to discover and authenticate to Wi-Fi hotspots that provide internet access. Passpoint is also known as Hotspot2.0
+
+The Passpoint-enabled client device will automatically connect upon subsequent visits. This eliminates the need for users to search for and choose a network, request Wi-Fi access, and re-enter authentication credentials each time they visit. Passpoint automates the entire process, enabling more seamless connectivity between Wi-Fi networks and ICB, all while delivering enterprise-level security. Passpoint provisioning supports on-boarding of new devices by establishing credential information and providing policy information to the ICB.
+
+Passpoint uses enterprise security with the latest security protocols, such as WPA2 and WPA3,for enhanced security and protection against hacking attempts.
+
+                                                     
+
+Passpoint is a communication standard certified by the Wi-Fi Alliance, which manages wireless LAN standards. It was previously called HotSpot 2.0. ​
+Normal Wi-Fi requires an SSID and password, but if your device supports this standard, When you enter a Wi-Fi spot, you will be automatically connected. (SIM authentication and electronic certificate method)​
+It is extremely secure because it uses certificates provided by each carrier instead of the typical authentication method using SSID and password.​
+3.4.2  - Component Diagram
+
+                                      
+
+Current ICB supports WPA2-PSK, WPA3-PSK and we need to support for WPA2/WPA3 enterprise for the Passpoint implementation.
+WPA2-PSK (Wi-Fi Protected Access 2 Pre-Shared Key) is a type of network that is protected by a single password shared between all users. WPA2-PSK protocol can’t distinguish between different users since everyone uses the same pre-shared key (hence the name).
+WPA2-Enterprise : Deploying WPA2-Enterprise requires a RADIUS server, which handles the task of authenticating network users' access.  802.1X Remote Authentication Dial In User Service (RADIUS) server secures WiFi by requiring a unique login for each user and applying authorization policies.​
+WPA2-Enteprise protocols can either be credential-based (EAP-TTLS) or certificate-based (EAP-TLS).​
+The switch/controller initiates the exchange by sending an EAPOL-Start packet to the client when the client connects to the network. The client's responses are forwarded to the  RADIUS server. When the authentication is complete, the switch/controller makes a decision whether to authorize the device for network access based on the user's status and possibly the attributes contained in the Access_Accept packet sent from the RADIUS server.                                    
+ 3.4.3 -Support for WPA/WPA2-Enterprise​
+
+As per the previous communication, the EAP type supported will be TLS and TTLS.​
+UI Changes - For EAP-TLS, the EAP, CA and User Certificate selection UI fields are required to be added.
+In case of TTLS, when we go for select certificate this CMC_WF_024 dropdown list item will appear and if we select TOFU, it shows TOFU popup with server certificate details.
+3.4.3.1 - TOFU Connection Specification
+
+1. In the "Network connection (Advance)" screen (`CMC_WF_022`) or the "Network security setup (Advance)" screen (`CMC_WF_021`). Select `TTLS` from the dropdown list of "Autehtication drop down menu" screen (`CMC_WF_023`) and Select `TOFU` from the dropdown list of "CA Certificate drop down menu" screen (`CMC_WF_024`).
+
+2. Connection Initiation: After clicking the "Connect" button:
+- A "Connecting..." lower pop-up will appear.
+- Subsequently a TOFU confirmation pop-up appears, it will be displayed for approx 9 seconds on either the "Network connection (Advance)" screen (CMC_WF_022) or the "Network security setup (Advance)" screen (CMC_WF_021). While TOFU pop-up is visible in background the the screen automatically transition back to the "Wireless Network" screen (CMC_WF_007) from either of the previous screens. However, the TOFU confirmation pop-up will remain visible even after the screen transition, until the user selects an action and this pop-up is managed by the AOSP side.
+
+
+
+
+
+(When TOFU pop-up appear on CMC_WF_021 or CMC_WF_022) 
+
+
+
+ (When TOFU pop-up background transit to  CMC_WF_007)
+
+3. User Action: Based on the user’s selection in the TOFU confirmation pop-up:
+
+   - Selecting "No, don't connect": The connection attempt is canceled, and no connection is established.
+   - Selecting "Yes, connect": The connection proceeds 
+   and:
+     - If successful, a "Successfully Connected" lower pop-up is shown.
+     - If unsuccessful, an "Unable to connect to <SSID>" error lower pop-up is displayed.
+
+ Please refer to the A14_PassPoint_Understanding for more details.
+
+
+4 性能要件 [SR-180400-WFS-25]
+4.1 Wi-Fi STA機能の性能要件
+Wi-Fi STA機能で要求される動作時間を以下に示す。
+
+
+
+表.4.1_1 Wi-Fi STA機能の性能要件
+
+
+Wi-Fi APのスキャン
+
+Wi-Fi APのスキャン開始	スキャン結果一覧表示	
+3.6秒以内とする。※1
+
+
+ICB to Wi-Fi AP Connection	Start connecting to a Wi-Fi AP	Complete connection with Wi-Fi AP	
+5 seconds or less.
+
+
+Disconnect ICB and Wi-Fi AP	Start disconnecting from the Wi-Fi AP	Disconnect from Wi-Fi AP	2 seconds or less.	
+Wi-Fi AP connection after boot	Startup (including key-off operation)	Complete connection with Wi-Fi AP	
+It must be less than 8 seconds.
+
+"Startup (including key-off action)" refers to warm boot.
+Wi-Fi PP	Start connecting to a Wi-Fi AP	Complete connection with Wi-Fi AP	
+ 
+
+To be decided
+*1 The requirement is within 2 seconds, but in the case of the 23PF, the initial scan from cold boot is 3.6 seconds due to the constraints of the adopted module (Qualcomm).
+
+4.2 List View/Page Movement
+List display: When you transition to the following screen, the time it takes to display the list is less than 150ms.
+
+*The performance is performed when the Wi-Fi AP scan results are completed.
+
+・Wireless Network screen
+
+・Wireless AP screen
+
+
+
+・The performance of the following screen is defined in [Software Requirements Specification_HMI Basic Operation-4. Performance Requirements] from the time the tap operation of the list up and down buttons to the start of moving the list.
+
+・Wireless Network screen
+
+*The performance is based on the AP scan results that have been obtained.
+
+・Wireless AP screen
+
+
+
+4.3 Performance Requirements When ACC OFF
+・The time from the start of suspension with ACC OFF to the completion of Wi-Fi disconnection shall be less than 10 seconds.
+
+
+
+4.4 Throughput with Wi-Fi AP
+4.4.1 Moving Averages
+At a distance of 5 m in all directions to the center of the vehicle, the average moving value of 180 degrees is 40 Mbps or more.
+
+4.4.2 Minimum Required Speed
+< Service List>
+
+Observe the minimum required speed at each test point in the following services: Consider BT simultaneous operation.
+
+Applications	　	　	Alexa	OTA	WAA	WCP
+Roll	　	-	ST	AP	AP
+
+Minimum Required Speed [bps]	10M	30M	32M	25M
+Alexa	-	10M	
+〇	×	×
+OTA	ST	30M	〇	　	×	×
+WAA	AP	32M	×	×	　	×
+WCP	AP	25M	×	×	×	　
+〇: Simultaneous operation possible
+
+×: Simultaneous action is impossible
+
+
+
+※ WAA: Wireless AndroidAuto
+
+※ WCP: Wireless CarPlay
+
+4.5 Performance Measurement Requirements
+Provides the following performance measurement capabilities for developers:
+
+Wi-Fi Reception Sensitivity Displays
+the reception sensitivity between and from the Wi-Fi AP currently connected in STA mode in the developer diag.
+Packet loss rate during Wi-Fi communication *1
+Communication speed during Wi-Fi communication *1
+*1 Measurements are made using iPerf. For more information about iPerf, refer to the Software Requirements Specification _Smartphone Connection.
+
+
+5 Function Settings
+5.1 Wi-Fi (▲c) State Setting Item [SR-180400-WFS-26]
+The setting items in the operating state of the Wi-Fi (▲c) function are shown below.
+
+The "〇" field in Keeping Setting Values is to keep the set value. The "×" field does not hold the set value.
+
+(▲c) 5.1.1 For Dual MAC Non-Compatible (▲d) variants
+Table.5.1_1 Wi-Fi (▲c) State Settings
+
+Settings	Setup Overview	Default Value	Setting range	Reason for changing Wi-Fi mode	Modes after change	Retention of Settings	Reset conditions	
+How to store
+
+Wi-Fi Mode Settings	Wi-Fi function working status	Network	
+OFF
+Smartphone Connection
+Network
+
+Select OFF mode by user operation	OFF	〇	When Factory Data Reset	Common to users (*12)
+Select Smartphone Connection mode by user control	Smartphone Connection	〇
+Select Network mode by user operation	Network	〇
+OTA background processing started (preparing for shutdown)	Network	×
+OTA background processing ends	※1	×
+Activated from Alexa	※23	〇
+Launching from the Connection Guide screen	Network	〇
+Connecting Wireless CarPlay/Wireless Android Auto	Smartphone Connection	〇
+*1: Switch modes according to the Wi-Fi mode settings you hold.
+
+*2: If the user is allowed to switch modes from the pop-up, the settings are saved.
+
+*12: If a guest user changes the setting value, the change will be discarded when the user switches to a general user and the guest user ends.
+
+*23: Only when Wireless CarPlay/Wireless Android Auto is connected, confirm the disconnection to the user before switching to Network mode.
+
+If it is not connected, it does not switch modes.
+
+(▲c) 5.1.2 For Dual MAC (▲d) variants
+Table.5.1_2 Wi-Fi State Settings
+
+Settings	Set up small items	Setup Overview	Default Value	Setting range	Trigger for Wi-Fi status change	Changed state	Retention of Settings	
+Reset conditions
+
+How to store
+
+Wi-Fi status settings	Wi-Fi Network	Wi-Fi STA function operating status	ON	
+ON/OFF
+
+Enabling Wi-Fi STA function by changing Wi-Fi function settings by user operation	ON	〇	When Factory Data Reset	Common to users (*2)
+Disable the Wi-Fi STA function by changing the setting of the Wi-Fi function by user operation	OFF	〇
+Start background processing of OTAs	ON	×
+OTA background processing ends	OFF※1	×
+Wi-Fi AP	Wi-Fi AP feature operation status	 ON (▲u)	ON/OFF	Enabling Wi-Fi AP function by changing Wi-Fi function settings by user operation	ON	〇
+Disable Wi-Fi AP function by changing the Wi-Fi function setting by user operation	OFF	〇
+Connecting Wireless CarPlay/Wireless Android Auto	ON	×
+*1: If the OTA background processing is turned off before the start of background processing
+
+*2: If a guest user changes the setting value, the change will be discarded when switching to a general user.
+
+ 
+
+5.2 Wi-Fi STA Function Settings [SR-180400-WFS-27] 1804_WI-FI_1.20_WIFI-01-01.01
+5.2.1 Wi-Fi AP Settings
+The following are the items that can be configured for the Wi-Fi AP used in the Wi-Fi STA function.
+
+
+
+Table 5.2_1 Wi-Fi AP Settings for Wi-Fi STA Function
+
+Settings	Setup Overview	When selecting an unregistered network	When selecting a connected network	When selecting a registered network	When creating a new network	
+Reset conditions
+
+How to store
+
+Default Value	Setting range	Default Value	Setting range	Default Value	Setting range	Default Value	Setting range
+Network SSID	SSID of the Wi-Fi AP to connect	※3	-	※3	-	※3	-	-	Up to 32 characters	
+Factory Data Reset (*5)
+
+Common to users (*4)
+Security	What type of security to use when connecting a Wi-Fi AP	※3	-	※3	-	※3	-	Open (no security)	※2	Factory Data Reset (*5)	Common to users (*4)
+Password	Password to connect to the Wi-Fi AP	-	※1	※3	-	※3	-	-	※1	Factory Data Reset (*5)	Common to users (*4)
+Show password	Display
+the contents of the "Password" field entered	OFF	ON/OFF	-	-	-	-	OFF	ON/OFF	At the end of each screen	Common to users (*4)
+Honda Update License	Whether to allow automatic download of OTA update software	※6ON	ON/OFF	※3	ON/OFF	※3	ON/OFF	※6ON	ON/OFF	Factory Data Reset (*5)	Common to users (*4)
+Authentication 	Authentication for connecting to Wi-Fi PP enabled APs	 	 	 	 	 	 	 	 	 	 
+Anonymous ID	Anonymous ID for connecting to Wi-Fi PP enabled APs	 	 	 	 	 	 	 	 	 	 
+Domain	Domain for connecting to Wi-Fi PP enabled APs	 	 	 	 	 	 	 	 	 	 
+CA Certificate	CA Certificate for connecting to Wi-Fi PP enabled APs	 	 	 	 	 	 	 	 	 	 
+User Certificate	User Certificate for connecting to Wi-Fi PP enabled APs	 	 	 	 	 	 	 	 	 	 
+Phase 2 Authentication	Supported authentication is MSCHAPv2. Required for Wi-Fi PP	 	 	 	 	 	 	 	 	 	 
+*1 For password entry, refer to [3.1.4.6 Security of Wi-Fi STA Function].
+
+*2 For information on the encryption formats that can be used, see [3.1.4.6 Security of Wi-Fi STA function].
+
+*3 Reflects the settings of the Wi-Fi AP selected by the user.
+
+*4 Guest users can change or delete settings only for Wi-Fi APs newly registered by guest users.
+
+*5 Wi-Fi APs newly registered by guest users will be deleted when the user switches to general users and the guest user ends.
+
+*6 The initial setting value varies depending on the direction.
+
+5.2.2 User Promotion Settings for Using Wi-Fi STA Connections
+Keep the user choice setting for whether or not to display the Connection Guide Notification when the ICB starts.
+
+
+
+Table 5.2_2 User Promotion Settings for Wi-Fi STA Connection Usage
+
+Connection Guide Notification	
+User settings for whether to display the Connection Guide Notification.
+
+If you want to "view", display the notification depending on the Wi-Fi and TSU status.
+For more information, see [3.1.4.8.2 Notification Notification].
+
+If you do not display, the notification will not be displayed regardless of the Wi-Fi or TSU status.
+
+Show	Show/not show	When Factory Data Reset	Individual user (*1)
+*1 Guest users do not retain the set value.
+
+
+
+5.3 Wi-Fi AP Function Settings [SR-180400-WFS-28]
+The following items need to be configured to use the Wi-Fi AP function.
+
+
+
+Table 5.3_1 Wi-Fi AP Function Settings
+
+Settings	Setup Overview	Default Value	Setting range	
+Reset conditions
+
+How to store
+
+ICB SSID(※5)	
+ICB access point name. It will appear on the peripherals.
+
+Car-XXXX(※1)	Up to 32 characters	
+When Factory Data Reset
+
+Common to users (*7)
+
+ICB Security	The type of security used when connecting the ICB's Wi-Fi APs.	※3	※3	When Factory Data Reset	Common to users (*7)
+ICB Password(※2)	
+Set a security password that the Wi-Fi STA device uses when connecting to the Wi-Fi AP of the ICB.
+
+Random string (*3*6)	※3	When Factory Data Reset	Common to users (*7)
+Show password	Displays the contents of the "Password" field you entered.
+OFF	
+ON
+
+When the Wi-Fi AP Setup Screen
+Exits
+
+Common to users (*7)
+OFF
+ICB AP Band(※4)
+The frequency band used.
+
+The frequency bands used are specified by the specifications of Wireless CarPlay and Wireless Android Auto, and can only be changed in the developer diag.
+
+2.4GHz Band	
+2.4GHz Band
+
+When Factory Data Reset	Common to users (*7)
+5GHz Band
+*1 "XXXX" is the last 4 digits of the MAC address).
+
+*2 For password input, refer to [3.1.4.6 Security of Wi-Fi STA Function] (3).
+
+*3 See [3.1.5.3 Security of Wi-Fi AP functions].
+
+*4 For details on the frequency band, refer to the [Software Requirements Specification_Smartphone Connection].
+
+*5 Settings can be
+changed
+
+*6 Regenerate the guest user password when starting a guest user.
+
+*7 If a guest user changes the setting value, the change will be discarded when the user switches to a general user and the guest user ends.
+
+
+
+
+6 Types of data used and data formats
+6.1 Storage Stored Data [SR-180400-WFS-29]
+6.1.1 Settings for each Wi-Fi function
+
+For information on storage data in the settings of each Wi-Fi function, refer to [5 Function Settings].
+
+When logged in as a guest user, keep each setting for the guest user.
+
+
+
+6.1.2 Wi-Fi STA Function
+
+The storage data for the Wi-Fi STA function is shown below.
+
+Wi-Fi AP Registrations	Number of Wi-Fi APs registered with ICB
+Initial Registration Network List Information	Refer to the list of initially registered Honda affiliated Wi-Fi APs [3.1.4.7 About Initially Registered Honda Affiliated Wi-Fi APs]
+Table.6.1.2_1 Storage Data for Wi-Fi STA Function
+
+
+
+For information on storage data, refer to [5 Function Settings].
+
+6.2 Communication Data [SR-180400-WFS-30]
+The communication data is shown below.
+
+
+
+Table 6.2_1 Communication Data
+
+ICB SSID	ICB Wi-Fi AP SSID	IEEE 802.11ac-2013
+ICB Wi-Fi MAC Address	ICB Wi-Fi AP MAC Address	IEEE 802.11ac-2013
+ICB Wi-Fi IP Address	ICB Wi-Fi AP IP Address	IEEE 802.11ac-2013
+Wi-Fi AP	Access point information for Wi-Fi STA function	IEEE 802.11ac-2013
+Connected Wi-Fi STA device name	Device name of the connected Wi-Fi STA device	IEEE 802.11ac-2013
+Connected Wi-Fi STA device type	Connection type of Wi-Fi STA device connected	IEEE 802.11ac-2013
+
+
+
+7 Security Design Requirements [SR-180400-WFS-31]
+TARA-04 Threat Analysis Items	ID	Target	Implementation details	Specific implementation details	Applicable function items
+TARA-04 脅威分析項目	ID	対象	実施内容	具体的な実施内容	該当する機能項目
+External IF	SR-EP-01-01-01	WiFi	Specifications: Wi-Fi encryption and authentication methods must be based on WPA2-PSK (AES or later). (WEP, WPA-TKIP, WPA-AES, WPA2-TKIP are not available)	Use WPA2 Personal, WPA3-SAE Transition Mode, and WPA3 Personal to secure Wi-Fi AP functions.
+See 3.1.5.3 Security of Wi-Fi AP Functions.	- Compatible with Wi-Fi AP function.
+SR-EP-01-01-05	WiFi	Meet the requirements of the CYBER SECURITY FOR WIRELESS COMMUNICATION 2.7 W-Fi SPEC.	
+- WPA2 Personal, WPA3-SAE Transition Mode, and WPA3 Personal are used to secure Wi-Fi AP functions.
+See 3.1.5.3 Security of Wi-Fi AP Functions.
+
+・At the factory factory, it will be in Network mode (▲c) (in the case of the Dual MAC compatible (▲d) variant, the Wi-Fi STA function is enabled, and the Wi-Fi AP function is disabled).
+See 3.1.3.4 Preserving Wi-Fi State Settings.
+
+- Lists the connected Wi-Fi STA devices.
+[3.1.5.2 Wi-Fi STA Device Display During Connection] - [Table.3.1.5.2_1 Wi-Fi AP Function Started and Operated After Starting] - See [Device List].
+
+・The setting of the Wi-Fi AP function can be changed by the user.
+See [3.1.5.1 Wi-Fi AP Settings].
+
+- Display the security status of the access point to be connected.
+See 3.1.4.1 Scanning Wi-Fi APs.
+
+
+- Enables the deletion of registered WI-Fi APs by user operation.
+
+See 3.1.4.4 Deleting a Registered Wi-Fi AP.
+
+
+- Delete the information of the registered network in Factory Data Reset.
+See [5.2 Wi-Fi AP Settings for Wi-Fi STA Function].
+
+- Start the Wi-Fi AP function.
+
+- Change the settings of the Wi-Fi AP function.
+
+- Connect to a nearby Wi-Fi AP.
+
+- Delete the registered Wi-Fi AP.
+
+SR-EP-01-01-15	WiFi	If the product is a station (STA), implement a mechanism to notify the user that it is an insecure AP if it scans an access point (AP) that does not apply any encryption method.
+・In the list display of scanned APs, the identity of the AP is announced by icons and text. (The figure below is an example)
+- Before connecting to the AP, check the connection permission for the user	- Displays whether the access points detected by the scan are secured.
+See 3.1.4.1 Scanning Wi-Fi APs.	- Connect to a nearby Wi-Fi AP.
+SR-EP-01-01-17	WiFi	If the product is an access point (AP), enable the privacy separator if the Wi-Fi hardware side supports it.	
+- Enable the privacy separator for the Wi-Fi AP.
+
+- Compatible with Wi-Fi AP function.
+Information & Functions	SR-AS-20-03-03	Password authentication function	Specifications: When setting passwords, set input rules so that they cannot be identified by brute force attacks or dictionary attacks.
+・The number of characters must be xx or more.
+・Include uppercase letters, lowercase letters, and numbers.	- Set input rules for the password of the Wi-Fi AP function.
+See 3.1.5.3 Security of Wi-Fi AP Functions.	- Compatible with Wi-Fi AP function.
+SR-AS-20-03-05	Password authentication function	Specification: If the password set by the end user is set by default, the HMI specification should be used to encourage the end user to change the password so that the default setting is not used as it is.	- Initially set the password based on the ICB-specific value.
+See 3.1.5.3 Security of Wi-Fi AP Functions.	- Change the settings of the Wi-Fi AP function.
+SR-AS-20-03-07	Password authentication function	Specifications: To prevent snooping, the HMI does not display the password when the end user enters the password.
+・Make sure that you don't know your password with letters such as "*" or "●".
+・If the password can be displayed, the initial setting should be hidden, and the choice of display or hide should be left to the end user.
+・However, consideration should be given to recognizing the characters entered by the end user. (Display input characters for a short time, highlight pressed softkeys, etc.)	・The password is displayed in a hidden character in the initial state, and it is possible to display it by user operation.
+See 3.1.4.2 Connecting to a Wi-Fi AP.	- Connect to a nearby Wi-Fi AP.
+SR-AS-05-01-01	WiFi Settings	Specifications: SSID and passphrase should be configurable (change/erase) by the end user.	・The setting of the Wi-Fi AP function can be changed by the user.
+See [3.1.5.1 Wi-Fi AP Settings].	- Change the settings of the Wi-Fi AP function.
+SR-AS-05-01-02	WiFi Settings	Specification: Implement a mechanism to encourage end users to change so that the SSID and passphrase are not used by default.	- Initially set the password based on the ICB-specific value.
+See 3.1.5.3 Security of Wi-Fi AP Functions.	- Change the settings of the Wi-Fi AP function.
+SR-AS-05-02-03	WiFi Settings	Specifications: When setting passphrases, set up input rules that are not identified by brute force attacks or dictionary attacks.
+・The number of characters must be 16 or more.
+・Include uppercase letters, lowercase letters, and numbers.	- Set input rules for the password of the Wi-Fi AP function.
+See 3.1.5.3 Security of Wi-Fi AP Functions.	- Compatible with Wi-Fi AP function.
+SR-AS-05-02-05	Ability to work with WiFi passphrases	
+・Data with medium and high privacy rank
+
+Do one of the following:
+
+/data (recommended)
+
+・Encrypt your own
+
+・No privacy rank, low data
+
+/data
+
+- Compliant with AOSP and stores passwords for Wi-Fi AP functions in the /data area.	-
+
+
+
+APPENDIX
+X1 Template Update History
+DRAFT	
+06 Feb 2019 
+
+HGT Katsunori Takahashi
+
+Considering creation
+DRAFT2	
+19 Aug 2019 
+
+VRS Yukio Yamada	
+Conduct readings within the process team. The following points have been addressed.
+
+Company name changed from "Honda R&D Four-Wheel R&D Center" to "Honda R&D Automobile Center"
+
+DRAFT3	
+10 Sep 2019 
+
+MIC Mariko Yokota	
+Changing from HTML macro to user macro
+
+X1.1 Deleting the Template Styled Section (Forbidden Deletion)
+
+X2 Template Creation Notes
+Click here to expand...

@@ -10,24 +10,20 @@ a manual Refresh button. Log box under the dot shows the raw
 Tries several common adb locations if `adb` isn't found on PATH.
 """
 
+import os
 import shutil
 import subprocess
 import tkinter as tk
 from tkinter import scrolledtext
 
 # Common install locations to fall back to if "adb" isn't on PATH.
+_home = os.path.expanduser("~")
 FALLBACK_ADB_PATHS = [
-    "adb",
+    r"D:\adb 1\adb\abd.exe",
+    r"D:\adb 1\adb\adb.exe",
     "/usr/bin/adb",
     "/usr/local/bin/adb",
     "/opt/homebrew/bin/adb",
-    str_expand := None,  # placeholder, replaced below
-]
-FALLBACK_ADB_PATHS = [p for p in FALLBACK_ADB_PATHS if p]
-
-import os
-_home = os.path.expanduser("~")
-FALLBACK_ADB_PATHS += [
     os.path.join(_home, "Library/Android/sdk/platform-tools/adb"),      # macOS
     os.path.join(_home, "AppData/Local/Android/Sdk/platform-tools/adb.exe"),  # Windows
     os.path.join(_home, "Android/Sdk/platform-tools/adb"),              # Linux
